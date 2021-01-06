@@ -1,4 +1,5 @@
 import React from 'react';
+import './USAState.scss';
 
 const USAState = () => {
 }
