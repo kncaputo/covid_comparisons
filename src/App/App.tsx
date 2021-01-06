@@ -9,14 +9,26 @@ interface Props {
 }
 
 interface State {
-  selectedUSAState: {};
+  selectedUSAState: {
+    date: number,
+    state: string,
+    positive: number,
+    hospitalizedCurrently: number,
+    death: number
+  };
 }
 
 class App extends Component<Props,State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selectedUSAState: {}
+      selectedUSAState: {
+        date: 0, 
+        state: '',
+        positive: 0,
+        hospitalizedCurrently: 0,
+        death: 0
+      }
     }
   }
 
@@ -28,9 +40,9 @@ class App extends Component<Props,State> {
 
   render() {
     return(
-      <main>
+      <section>
         <h1>COCO</h1>
-        <body>
+        <main>
           <section>
             <USAState />
           </section>
@@ -42,8 +54,8 @@ class App extends Component<Props,State> {
           <nav>
             <ComparisonContainer />
           </nav>
-        </body>
-      </main>
+        </main>
+      </section>
     )
   }
 }
