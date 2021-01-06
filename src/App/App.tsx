@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import USAState from '../USAState/USAState';
+import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
+import ComparisonList from '../ComparisonList/ComparisonList';
 import './App.scss';
 
 interface Props { 
@@ -23,12 +26,10 @@ class App extends Component<Props,State> {
         <h1>COCO</h1>
         <body>
           <nav>
-            <Dropdown />
-            <p>This is a dropdown</p>
+            <Nav />
           </nav>
           <section>
             <USAState />
-            <p>Hello, This will be the section for the state info</p>
           </section>
         </body>
       </main>
