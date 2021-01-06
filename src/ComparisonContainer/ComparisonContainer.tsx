@@ -5,8 +5,18 @@ import './ComparisonContainer.scss';
 const ComparisonContainer = () => {
   return(
     <section>
-      <p>This is ComparisonContainer Component</p>
-      <ComparisonDetails />
+      <h3>How Does It Compare?</h3>
+      <section>
+        <section>
+          <p>Write up text explaining app</p>
+        </section>
+        <select>
+          <option value="Alyssa and Kara">alyssa and kara</option>
+          <option value="Alyssa">alyssa</option>
+          <option value="Kara">kara</option>
+          <option value="Joe">Joe</option>
+        </select>
+      </section>
     </section>
   )
 }
