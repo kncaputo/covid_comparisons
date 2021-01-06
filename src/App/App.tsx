@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import USAState from '../USAState/USAState';
 import ComparisonContainer from '../ComparisonContainer/ComparisonContainer';
 import Stat from '../Stat/Stat';
+import { fetchCurrentStateData } from '../apiCalls'
 import './App.scss';
 
 interface Props { 
@@ -17,6 +18,12 @@ class App extends Component<Props,State> {
     this.state = {
       selectedUSAState: {}
     }
+  }
+
+  componentDidMount() {
+    fetchCurrentStateData()
+    .then(data => this.setState({ selectedUSAState: data }))
+    .catch(error => console.error(error))
   }
 
   render() {
