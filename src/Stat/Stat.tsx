@@ -4,7 +4,10 @@ import './Stat.scss';
 const Stat = () => {
   return(
     <section>
-      <p>This is Stat Component</p>
+      <img alt='Stat Icon' className='stat-icon'/>
+      <p>Stat Number</p>
+      <p>Stat Title</p>
+      <p>Stat Details</p>
     </section>
   )
 }

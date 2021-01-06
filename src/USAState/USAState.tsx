@@ -5,7 +5,7 @@ const USAState = () => {
   return(
     <section>
       <section>
-       <img className='current-state'/>
+       <img alt='Current State' className='current-state'/>
         <h1>Colorado</h1>
       </section>
       <h2>Date</h2>
