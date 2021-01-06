@@ -44,7 +44,9 @@ class App extends Component<Props,State> {
         <h1>COCO</h1>
         <main>
           <section>
-            <USAState />
+            <USAState 
+              date={this.state.selectedUSAState.date}
+            />
           </section>
           <section>
             <Stat />
