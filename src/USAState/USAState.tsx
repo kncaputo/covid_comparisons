@@ -4,7 +4,11 @@ import './USAState.scss';
 const USAState = () => {
   return(
     <section>
-      <p>This is USAState Component</p>
+      <section>
+       <img className='current-state'/>
+        <h1>Colorado</h1>
+      </section>
+      <h2>Date</h2>
     </section>
   )
 }

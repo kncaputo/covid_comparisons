@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import USAState from '../USAState/USAState';
-import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
-import ComparisonList from '../ComparisonList/ComparisonList';
+import ComparisonContainer from '../ComparisonContainer/ComparisonContainer';
 import './App.scss';
 
 interface Props { 
-
 }
 
 interface State {
@@ -25,12 +23,12 @@ class App extends Component<Props,State> {
       <main>
         <h1>COCO</h1>
         <body>
-          <nav>
-            <Nav />
-          </nav>
           <section>
             <USAState />
           </section>
+          <nav>
+            <ComparisonContainer />
+          </nav>
         </body>
       </main>
     )
