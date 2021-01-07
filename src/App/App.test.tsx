@@ -25,9 +25,9 @@ describe('App', () => {
     const cases = screen.getByText('Cases');
     const deaths = screen.getByText('Deaths');
     const currentHospitalizations = screen.getByText('Current Hospitalizations');
-    const howDoesItCompare = screen.getByText('How Does It Compare?')
-    const dropdown = screen.getByTestId('dropdown')
-    const casesIcon = screen.getByTestId('cases')
+    const howDoesItCompare = screen.getByText('How Does It Compare?');
+    const dropdown = screen.getByTestId('dropdown');
+    const casesIcon = screen.getByTestId('cases');
     
     expect(tagline).toBeInTheDocument();
     expect(overviewTitle).toBeInTheDocument();
@@ -38,5 +38,12 @@ describe('App', () => {
     expect(howDoesItCompare).toBeInTheDocument();
     expect(dropdown).toBeInTheDocument();
     expect(casesIcon).toBeInTheDocument();
+  });
+
+  it('should simplify data for single state', () => {
+    // const simplifyAPIDataForSingleState = jest.fn();
+    
+    // expect(simplifyAPIDataForSingleState).toHaveBeenCalled();
+    // expect(mockSimplifyAPIDataForSingleState).toBeCalledWith(singleState);
   });
 });
