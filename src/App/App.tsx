@@ -46,11 +46,11 @@ class App extends Component<Props, State> {
   componentDidMount() {
     fetchCurrentStateData()
     .then(data => this.simplifyAPIDataForSingleState(data))
-    .catch(error => console.error(error));
+    .catch(() => console.error);
 
     fetchAllCurrentUSAData()
     .then(data => this.simplifyAPIDataForAllStates(data[0]))
-    .catch(error => console.error(error));
+    .catch(() => console.error);
   }
 
   simplifyAPIDataForSingleState = (data: { date: number, state: string, 
@@ -66,7 +66,6 @@ class App extends Component<Props, State> {
   }
 
   simplifyAPIDataForAllStates = (data: { positive: number, death: number, hospitalizedCurrently: number }): void => {
-    console.log(data)
     const USAData = {
       positive: data.positive,
       death: data.death,

@@ -9,7 +9,6 @@ import { singleState, usaData } from '../sampleData';
 import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import '@testing-library/jest-dom';
-import '@types/jest';
 jest.mock('../apiCalls');
  
 describe('App', () => {
