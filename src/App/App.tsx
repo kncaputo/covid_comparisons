@@ -99,13 +99,13 @@ class App extends Component<Props, State> {
           </section>
           <section className='stats-container'>
             <Stat 
-              icon={ GiCoffin }
+              icon={ RiVirusFill }
               number={ this.state.selectedUSAState.positive }
               title={ 'Cases' }
               details={ 'Some details that we want to display' }
             />
             <Stat 
-              icon={ RiVirusFill }
+              icon={ GiCoffin }
               number={ this.state.selectedUSAState.death }
               title={ 'Deaths' }
               details={ 'Some details that we want to display' }

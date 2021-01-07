@@ -3,8 +3,34 @@ svg {
   width: 7em;
 }
 
+.cases {
+  color: #7aad36;
+}
+
+.hospitalizations {
+  color: #0C479D;
+}
+
+.deaths {
+  color: #ab978c;
+}
+
 .stats {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.stats-number {
+  margin-bottom: 0;
+}
+
+.stats-title {
+  margin-top: 0;
+  font-size: 0.9em;
+}
+
+.stats-details {
+  margin-top: 0.2em;
+  font-size: 0.8em;
 }
