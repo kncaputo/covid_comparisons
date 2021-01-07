@@ -7,7 +7,7 @@ const USAState = (prop: { date?: number }) => {
         <h1 className='state-image'></h1>
         <h2 className='state-name'>Colorado</h2>
       </section>
-      <h3>{ prop.date }</h3>
+      <h3 className='date'>Information for { prop.date }</h3>
     </section>
   )
 }
