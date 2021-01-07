@@ -1,8 +1,12 @@
+body {
+  background-color: #F2F2F2;
+}
+
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 0.15em black solid;
+  // border-bottom: 0.15em black solid;
 }
 
 .title {
@@ -20,11 +24,12 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Maitree', serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 1.2em;
   margin-top: 0.5em;
-  padding-bottom: 0.5em;
-  border-bottom: 0.15em black solid;
+  padding: 0.5em 0em 0.5em 0em;
+  background-color: lightgrey;
+  // border-bottom: 0.15em black solid;
 }
 
 .overview-title {
