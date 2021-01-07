@@ -15,10 +15,12 @@ const ComparisonContainer = () => {
             to other castastrophic events in history.</p>
         </section>
         <select id='dropdown'>
-          <option value="Alyssa and Kara">alyssa and kara</option>
-          <option value="Alyssa">alyssa</option>
-          <option value="Kara">kara</option>
-          <option value="Joe">Joe</option>
+          <option id='dropdown-value' value="9/11">9/11</option>
+          <option id='dropdown-value' value="WWII">WWII</option>
+          <option id='dropdown-value' value="Shark Attacks">Shark Attacks</option>
+          <option id='dropdown-value' value="Car Crash Fatalities (2019)">Car Crash Fatalities (2019)</option>
+          <option id='dropdown-value' value="Flu Fatalities (2019)">Flu Fatalities (2019)</option>
+          <option id='dropdown-value' value="Hurrican Katrina">Hurrican Katrina</option>
         </select>
       </section>
     </section>
