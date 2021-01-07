@@ -20,7 +20,7 @@ interface State {
   };
 }
 
-class App extends Component<Props,State> {
+class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -36,8 +36,19 @@ class App extends Component<Props,State> {
 
   componentDidMount() {
     fetchCurrentStateData()
-    .then(data => this.setState({ selectedUSAState: data }))
-    .catch(error => console.error(error))
+    .then(data => this.simplifyAPIData(data))
+    .catch(error => console.error(error));
+  }
+
+  simplifyAPIData = (data: { date: number, state: string, positive: number, hospitalizedCurrently: number, death: number }): void => {
+    const stateData = {
+      date: data.date,
+      state: data.state,
+      positive: data.positive,
+      hospitalizedCurrently: data.hospitalizedCurrently,
+      death: data.death
+    }
+    this.setState({ selectedUSAState: stateData })
   }
 
   render() {
