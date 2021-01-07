@@ -20,7 +20,7 @@ const ComparisonContainer = () => {
           <option id='dropdown-value' value="Shark Attacks">Shark Attacks</option>
           <option id='dropdown-value' value="Car Crash Fatalities (2019)">Car Crash Fatalities (2019)</option>
           <option id='dropdown-value' value="Flu Fatalities (2019)">Flu Fatalities (2019)</option>
-          <option id='dropdown-value' value="Hurrican Katrina">Hurrican Katrina</option>
+          <option id='dropdown-value' value="Hurricane Katrina">Hurricane Katrina</option>
         </select>
       </section>
     </section>
