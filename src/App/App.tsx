@@ -97,7 +97,7 @@ class App extends Component<Props, State> {
               date={ this.state.selectedUSAState.date }
             />
           </section>
-          <section>
+          <section className='stats-container'>
             <Stat 
               icon={ GiCoffin }
               number={ this.state.selectedUSAState.positive }

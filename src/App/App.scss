@@ -34,3 +34,10 @@ header {
 .overview-numbers {
   font-size: 1.3em;
 }
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4em;
+  font-family: 'Heebo', sans-serif;
+}
