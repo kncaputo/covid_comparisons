@@ -19,7 +19,7 @@ interface Details {
   date?: number,
   state?: string,
   positive: number,
-  hospitalizedCurrently?: number,
+  hospitalizedCurrently: number,
   death: number
 }
 
@@ -30,7 +30,8 @@ class App extends Component<Props, State> {
     this.state = {
       allUSAData: {
         positive: 0,
-        death: 0
+        death: 0,
+        hospitalizedCurrently: 0
       }, 
       selectedUSAState: {
         date: 0, 
@@ -64,11 +65,12 @@ class App extends Component<Props, State> {
     this.setState({ selectedUSAState: stateData })
   }
 
-  simplifyAPIDataForAllStates = (data: { positive: number, death: number }): void => {
+  simplifyAPIDataForAllStates = (data: { positive: number, death: number, hospitalizedCurrently: number }): void => {
     console.log(data)
     const USAData = {
       positive: data.positive,
-      death: data.death
+      death: data.death,
+      hospitalizedCurrently: data.hospitalizedCurrently
     }
     this.setState({ allUSAData: USAData })
   }
@@ -87,7 +89,8 @@ class App extends Component<Props, State> {
             </section>
             <section>
               <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.positive) }</span> cases &nbsp; &nbsp; &nbsp; &nbsp;
-              <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.death) }</span> deaths
+              <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.death) }</span> deaths &nbsp; &nbsp; &nbsp; &nbsp;
+              <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.hospitalizedCurrently) }</span> current hospitalizations 
             </section>
           </h3>
         </section>
@@ -102,19 +105,19 @@ class App extends Component<Props, State> {
               icon={ RiVirusFill }
               number={ this.state.selectedUSAState.positive }
               title={ 'Cases' }
-              details={ 'Some details that we want to display' }
+              details={ `This represents ${((this.state.selectedUSAState.positive / this.state.allUSAData.positive) * 100).toFixed(1)}% of all cases.` }
             />
             <Stat 
               icon={ GiCoffin }
               number={ this.state.selectedUSAState.death }
               title={ 'Deaths' }
-              details={ 'Some details that we want to display' }
+              details={ `This represents ${((this.state.selectedUSAState.death / this.state.allUSAData.death) * 100).toFixed(1)}% of all deaths.` }
             />
             <Stat 
               icon={ RiHospitalFill }
               number={ this.state.selectedUSAState.hospitalizedCurrently }
-              title={ 'Hospitalizations' }
-              details={ 'Some details that we want to display' }
+              title={ 'Current Hospitalizations' }
+              details={ `This represents ${((this.state.selectedUSAState.hospitalizedCurrently / this.state.allUSAData.hospitalizedCurrently) * 100).toFixed(1)}% of all current hospitalizations.` }
             />
           </section>
           <nav>
