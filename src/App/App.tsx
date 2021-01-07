@@ -76,7 +76,10 @@ class App extends Component<Props, State> {
   render() {
     return(
       <section>
-        <h1>COCO</h1>
+        <header>
+          <h1 className='title'>C🦠C🦠</h1>
+          <h3 className='tagline'>Covid Comparisons</h3>
+        </header>
         <section>
           <h3>
             USA Overview: { this.state.allUSAData.positive } Cases | 
