@@ -4,11 +4,15 @@ import './ComparisonContainer.scss';
 
 const ComparisonContainer = () => {
   return(
-    <section>
-      <h3>How Does It Compare?</h3>
+    <section className='comparison-container'>
+      <h3 className='comparison-title'>How Does It Compare?</h3>
       <section>
-        <section>
-          <p>Write up text explaining app</p>
+        <section className='app-description'>
+          <p>The number of deaths from the coronavirus is astounding but 
+            is often hard to picture the magnitude of.</p>
+          <p className='paragraph2'>Select an event from 
+            the dropdown menu below to see how the deaths in this state compare 
+            to other castastrophic events in history.</p>
         </section>
         <select>
           <option value="Alyssa and Kara">alyssa and kara</option>
