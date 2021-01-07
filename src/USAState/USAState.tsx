@@ -3,11 +3,11 @@ import './USAState.scss';
 const USAState = (prop: { date?: number }) => {
   return(
     <section>
-      <section>
-       <img alt='Current State' className='current-state'/>
-        <h1>Colorado</h1>
+      <section className='title-info'>
+        <h1 className='state-image'></h1>
+        <h2 className='state-name'>Colorado</h2>
       </section>
-      <h2>{ prop.date }</h2>
+      <h3 className='date'>Information for { prop.date }</h3>
     </section>
   )
 }

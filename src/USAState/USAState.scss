@@ -1,0 +1,23 @@
+.title-info {
+  display: flex;
+  justify-content: center;
+}
+
+.state-image {
+  border: 0.16em black solid;
+  height: 8em;
+  width: 11.5em;
+  margin-right: 2em;
+}
+
+.state-name {
+  font-family: 'Heebo', sans-serif;
+  font-size: 3em;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-family: 'Heebo', sans-serif;
+}
