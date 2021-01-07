@@ -1,42 +1,119 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import USAState from '../USAState/USAState';
 import ComparisonContainer from '../ComparisonContainer/ComparisonContainer';
 import Stat from '../Stat/Stat';
+import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
+import { GiCoffin } from 'react-icons/gi';
+import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import './App.scss';
 
 interface Props { 
 }
 
 interface State {
-  selectedUSAState: {};
+  allUSAData: Details, 
+  selectedUSAState: Details
 }
 
-class App extends Component<Props,State> {
+interface Details {
+  date?: number,
+  state?: string,
+  positive: number,
+  hospitalizedCurrently?: number,
+  death: number
+}
+
+
+class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selectedUSAState: {}
+      allUSAData: {
+        positive: 0,
+        death: 0
+      }, 
+      selectedUSAState: {
+        date: 0, 
+        state: '',
+        positive: 0,
+        hospitalizedCurrently: 0,
+        death: 0
+      }
     }
+  }
+
+  componentDidMount() {
+    fetchCurrentStateData()
+    .then(data => this.simplifyAPIDataForSingleState(data))
+    .catch(error => console.error(error));
+
+    fetchAllCurrentUSAData()
+    .then(data => this.simplifyAPIDataForAllStates(data[0]))
+    .catch(error => console.error(error));
+  }
+
+  simplifyAPIDataForSingleState = (data: { date: number, state: string, 
+    positive: number, hospitalizedCurrently: number, death: number }): void => {
+    const stateData = {
+      date: data.date,
+      state: data.state,
+      positive: data.positive,
+      hospitalizedCurrently: data.hospitalizedCurrently,
+      death: data.death
+    }
+    this.setState({ selectedUSAState: stateData })
+  }
+
+  simplifyAPIDataForAllStates = (data: { positive: number, death: number }): void => {
+    console.log(data)
+    const USAData = {
+      positive: data.positive,
+      death: data.death
+    }
+    this.setState({ allUSAData: USAData })
   }
 
   render() {
     return(
-      <main>
+      <section>
         <h1>COCO</h1>
-        <body>
+        <section>
+          <h3>
+            USA Overview: { this.state.allUSAData.positive } Cases | 
+            { this.state.allUSAData.death } Deaths
+          </h3>
+        </section>
+        <main>
           <section>
-            <USAState />
+            <USAState 
+              date={ this.state.selectedUSAState.date }
+            />
           </section>
           <section>
-            <Stat />
-            <Stat />
-            <Stat />
+            <Stat 
+              icon={ GiCoffin }
+              number={ this.state.selectedUSAState.positive }
+              title={ 'Cases' }
+              details={ 'Some details that we want to display' }
+            />
+            <Stat 
+              icon={ RiVirusFill }
+              number={ this.state.selectedUSAState.death }
+              title={ 'Deaths' }
+              details={ 'Some details that we want to display' }
+            />
+            <Stat 
+              icon={ RiHospitalFill }
+              number={ this.state.selectedUSAState.hospitalizedCurrently }
+              title={ 'Hospitalizations' }
+              details={ 'Some details that we want to display' }
+            />
           </section>
           <nav>
             <ComparisonContainer />
           </nav>
-        </body>
-      </main>
+        </main>
+      </section>
     )
   }
 }
