@@ -19,6 +19,7 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 15em;
 }
 
 .stats-number {
@@ -31,6 +32,8 @@ svg {
 }
 
 .stats-details {
+  display: flex;
+  text-align: center;
   margin-top: 0.2em;
   font-size: 0.8em;
 }

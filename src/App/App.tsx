@@ -87,7 +87,7 @@ class App extends Component<Props, State> {
             <section className='overview-title'>
               USA Overview: &nbsp; &nbsp;
             </section>
-            <section>
+            <section className='overview-stats'>
               <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.positive) }</span> cases &nbsp; &nbsp; &nbsp; &nbsp;
               <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.death) }</span> deaths &nbsp; &nbsp; &nbsp; &nbsp;
               <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.hospitalizedCurrently) }</span> current hospitalizations 
