@@ -1,6 +1,6 @@
 import './Stat.scss';
 
-const Stat = (prop: { icon: any, number: number, title: string, details: string }) => {
+const Stat = (prop: { icon: any, number?: number, title: string, details: string }) => {
   return(
     <section>
       { <prop.icon/> }

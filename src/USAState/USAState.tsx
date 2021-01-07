@@ -1,6 +1,6 @@
 import './USAState.scss';
 
-const USAState = (prop: { date: number }) => {
+const USAState = (prop: { date?: number }) => {
   return(
     <section>
       <section>

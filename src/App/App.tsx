@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import USAState from '../USAState/USAState';
 import ComparisonContainer from '../ComparisonContainer/ComparisonContainer';
 import Stat from '../Stat/Stat';
-import { fetchCurrentStateData } from '../apiCalls'
+import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
 import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import './App.scss';
@@ -11,19 +11,27 @@ interface Props {
 }
 
 interface State {
-  selectedUSAState: {
-    date: number,
-    state: string,
-    positive: number,
-    hospitalizedCurrently: number,
-    death: number
-  };
+  allUSAData: Details, 
+  selectedUSAState: Details
 }
+
+interface Details {
+  date?: number,
+  state?: string,
+  positive: number,
+  hospitalizedCurrently?: number,
+  death: number
+}
+
 
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      allUSAData: {
+        positive: 0,
+        death: 0
+      }, 
       selectedUSAState: {
         date: 0, 
         state: '',
@@ -36,11 +44,16 @@ class App extends Component<Props, State> {
 
   componentDidMount() {
     fetchCurrentStateData()
-    .then(data => this.simplifyAPIData(data))
+    .then(data => this.simplifyAPIDataForSingleState(data))
+    .catch(error => console.error(error));
+
+    fetchAllCurrentUSAData()
+    .then(data => this.simplifyAPIDataForAllStates(data[0]))
     .catch(error => console.error(error));
   }
 
-  simplifyAPIData = (data: { date: number, state: string, positive: number, hospitalizedCurrently: number, death: number }): void => {
+  simplifyAPIDataForSingleState = (data: { date: number, state: string, 
+    positive: number, hospitalizedCurrently: number, death: number }): void => {
     const stateData = {
       date: data.date,
       state: data.state,
@@ -51,10 +64,25 @@ class App extends Component<Props, State> {
     this.setState({ selectedUSAState: stateData })
   }
 
+  simplifyAPIDataForAllStates = (data: { positive: number, death: number }): void => {
+    console.log(data)
+    const USAData = {
+      positive: data.positive,
+      death: data.death
+    }
+    this.setState({ allUSAData: USAData })
+  }
+
   render() {
     return(
       <section>
         <h1>COCO</h1>
+        <section>
+          <h3>
+            USA Overview: { this.state.allUSAData.positive } Cases | 
+            { this.state.allUSAData.death } Deaths
+          </h3>
+        </section>
         <main>
           <section>
             <USAState 
