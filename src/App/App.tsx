@@ -81,9 +81,14 @@ class App extends Component<Props, State> {
           <h3 className='tagline'>Covid Comparisons</h3>
         </header>
         <section>
-          <h3>
-            USA Overview: { this.state.allUSAData.positive } Cases | 
-            { this.state.allUSAData.death } Deaths
+          <h3 className='usa-overview'>
+            <section className='overview-title'>
+              USA Overview: &nbsp; &nbsp;
+            </section>
+            <section>
+              <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.positive) }</span> cases &nbsp; &nbsp; &nbsp; &nbsp;
+              <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.death) }</span> deaths
+            </section>
           </h3>
         </section>
         <main>

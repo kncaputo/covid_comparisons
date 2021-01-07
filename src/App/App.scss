@@ -15,3 +15,22 @@ header {
   font-family: 'Heebo', sans-serif;
   margin: 0em 0em 1em 0em;
 }
+
+.usa-overview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Maitree', serif;
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 0.15em black solid;
+}
+
+.overview-title {
+  font-size: 1.5em;
+}
+
+.overview-numbers {
+  font-size: 1.3em;
+}
