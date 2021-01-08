@@ -46,16 +46,16 @@ class App extends Component<Props, State> {
   componentDidMount() {
     fetchCurrentStateData()
     .then(data => this.simplifyAPIDataForSingleState(data))
-    .catch(error => console.error(error));
+    .catch(() => console.error);
 
     fetchAllCurrentUSAData()
     .then(data => this.simplifyAPIDataForAllStates(data[0]))
-    .catch(error => console.error(error));
+    .catch(() => console.error);
   }
 
   simplifyAPIDataForSingleState = (data: { date: number, state: string, 
-    positive: number, hospitalizedCurrently: number, death: number }): void => {
-    const stateData = {
+    positive: number, hospitalizedCurrently: number, death: number }): void => { 
+      const stateData = {
       date: data.date,
       state: data.state,
       positive: data.positive,
@@ -66,13 +66,25 @@ class App extends Component<Props, State> {
   }
 
   simplifyAPIDataForAllStates = (data: { positive: number, death: number, hospitalizedCurrently: number }): void => {
-    console.log(data)
     const USAData = {
       positive: data.positive,
       death: data.death,
       hospitalizedCurrently: data.hospitalizedCurrently
     }
     this.setState({ allUSAData: USAData })
+  }
+
+  formatDate = (): string => {
+    if (typeof this.state.selectedUSAState.date === 'number') {
+      let rawDate = this.state.selectedUSAState.date?.toString();
+      let year = rawDate.substring(0, 4);
+      let month = rawDate.substring(4, 6);
+      let day = rawDate.substring(6, 8);
+
+      let formattedDate = `${month}/${day}/${year}`;
+      return formattedDate;
+    }  
+    return '--/--/----';
   }
 
   render() {
@@ -97,25 +109,25 @@ class App extends Component<Props, State> {
         <main>
           <section>
             <USAState 
-              date={ this.state.selectedUSAState.date }
+              date={ this.formatDate() }
             />
           </section>
           <section className='stats-container'>
             <Stat 
               icon={ RiVirusFill }
-              number={ this.state.selectedUSAState.positive }
+              number={ new Intl.NumberFormat('en-US').format(this.state.selectedUSAState.positive) }
               title={ 'Cases' }
               details={ `This represents ${((this.state.selectedUSAState.positive / this.state.allUSAData.positive) * 100).toFixed(1)}% of all cases.` }
             />
             <Stat 
               icon={ GiCoffin }
-              number={ this.state.selectedUSAState.death }
+              number={ new Intl.NumberFormat('en-US').format(this.state.selectedUSAState.death) }
               title={ 'Deaths' }
               details={ `This represents ${((this.state.selectedUSAState.death / this.state.allUSAData.death) * 100).toFixed(1)}% of all deaths.` }
             />
             <Stat 
               icon={ RiHospitalFill }
-              number={ this.state.selectedUSAState.hospitalizedCurrently }
+              number={ new Intl.NumberFormat('en-US').format(this.state.selectedUSAState.hospitalizedCurrently) }
               title={ 'Current Hospitalizations' }
               details={ `This represents ${((this.state.selectedUSAState.hospitalizedCurrently / this.state.allUSAData.hospitalizedCurrently) * 100).toFixed(1)}% of all current hospitalizations.` }
             />

@@ -14,7 +14,7 @@ const ComparisonContainer = () => {
             the dropdown menu below to see how the deaths in this state compare 
             to other castastrophic events in history.</p>
         </section>
-        <select id='dropdown'>
+        <select id='dropdown' data-testid='dropdown'>
           <option id='dropdown-value' value="9/11">9/11</option>
           <option id='dropdown-value' value="WWII">WWII</option>
           <option id='dropdown-value' value="Shark Attacks">Shark Attacks</option>
