@@ -6,14 +6,14 @@ describe('ComparisonContainer', () => {
   it('should render correctly', () => {
     render(
       <USAState 
-        date={ 1/1/21 }
+        date={ '01/01/2021' }
       />
     );
 
     const stateName = screen.getByText('Colorado');
-    // const date = screen.getByText(1/1/21);
+    const date = screen.getByText('Information for 01/01/2021');
 
     expect(stateName).toBeInTheDocument();
-    // expect(date).toBeInTheDocument();
+    expect(date).toBeInTheDocument();
   });
 });
