@@ -1,18 +1,58 @@
-export type ComparisonCategory = 'worldWar' | 'nextItem'
+export type ComparisonCategory = 'default' | 'worldWar' | '9/11'| 'shark-attacks' 
+  | 'car-crash-fatalities-2020' | 'flu-fatalities-2020' | 'Hurricane Katrina'
 
 export type ComparisonData = {
   [key: string]: string | number
 }
 
-interface Comparison {
+export interface Comparison {
   category: ComparisonCategory,
   data: ComparisonData
 }
 
-export const comparisonData: Comparison[] = [{
-  category: 'worldWar', 
-  data: {
-    title: 'hello',
-    deaths: 100
+export const comparisonData: Comparison[] = [
+  {
+    category: 'default', 
+    data: {
+      title: '',
+      deaths: 0
+    }
+  },
+  {
+    category: '9/11', 
+    data: {
+      title: '9/11 Deaths',
+      deaths: 100
+    }
+  } , {
+    category: 'worldWar', 
+    data: {
+      title: 'World War II Deaths',
+      deaths: 100
+    }
+  } , {
+    category: 'shark-attacks', 
+    data: {
+      title: 'Shark Attacks Deaths',
+      deaths: 100
+    }
+  } , {
+    category: 'car-crash-fatalities-2020', 
+    data: {
+      title: 'Car Crash Fatalities 2020',
+      deaths: 100
+    }
+  } , {
+    category: 'flu-fatalities-2020', 
+    data: {
+      title: 'Flu Fatalities 2020',
+      deaths: 100
+    }
+  } , {
+    category: 'Hurricane Katrina', 
+    data: {
+      title: 'Hurricane Katrina Fatalities',
+      deaths: 100
+    }
   }
-}]
+];

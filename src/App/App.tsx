@@ -6,7 +6,7 @@ import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
 import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import { Route, Switch } from 'react-router-dom';
-import { comparisonData, ComparisonCategory } from '../comparisonData';
+import { comparisonData, ComparisonCategory, Comparison } from '../comparisonData';
 import './App.scss';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
 
@@ -16,7 +16,7 @@ interface Props {
 interface State {
   allUSAData: Details, 
   selectedUSAState: Details,
-  selectedComparison: string
+  selectedComparison?: Comparison
 }
 
 interface Details {
@@ -44,7 +44,13 @@ class App extends Component<Props, State> {
         hospitalizedCurrently: 0,
         death: 0
       },
-      selectedComparison: ''
+      selectedComparison: {
+        category: 'default',
+        data: {
+          title: '',
+          deaths: 0
+        }
+      }
     }
   }
 
@@ -96,7 +102,7 @@ class App extends Component<Props, State> {
     let comparisonStats = comparisonData.find(datum => {
       return datum.category === dropdownValue;
     })
-    this.setState({ selectedComparison: dropdownValue })
+    this.setState({ selectedComparison: comparisonStats })
   }
 
   render() {
@@ -157,10 +163,10 @@ class App extends Component<Props, State> {
         <Route 
           exact 
           path='/:dropdownValue' 
-          render={({ match }) => {
+          render={() => {
             return (
               <ComparisonDetails
-               selection={ match.params.dropdownValue }
+               selection={ this.state.selectedComparison }
               />
             )
           }}
