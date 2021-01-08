@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
 import './ComparisonContainer.scss';
 
 const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string): any}) => {
-  let dropdownValue: string;
+  let dropdownValue: string = 'default'
   
-  const handleChange = (event: any) => {
+  let handleChange = (event: any) => {
     dropdownValue = event.target.value
+    console.log(dropdownValue)
   }
 
   return(
@@ -30,7 +32,9 @@ const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string
           <option id='dropdown-value' value='hurricane-katrina'>Hurricane Katrina</option>
         </select>
       </section>
-      <button className='comparison-button' onClick={() => prop.handleComparisonClick(dropdownValue)}>View Comparison</button>
+      <Link to={`/:${dropdownValue}`}>
+        <button className='comparison-button' onClick={() => prop.handleComparisonClick(dropdownValue)}>View Comparison</button>
+      </Link>
     </section>
   )
 }
