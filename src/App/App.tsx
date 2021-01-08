@@ -54,8 +54,8 @@ class App extends Component<Props, State> {
   }
 
   simplifyAPIDataForSingleState = (data: { date: number, state: string, 
-    positive: number, hospitalizedCurrently: number, death: number }): void => {
-    const stateData = {
+    positive: number, hospitalizedCurrently: number, death: number }): void => { 
+      const stateData = {
       date: data.date,
       state: data.state,
       positive: data.positive,
@@ -72,6 +72,19 @@ class App extends Component<Props, State> {
       hospitalizedCurrently: data.hospitalizedCurrently
     }
     this.setState({ allUSAData: USAData })
+  }
+
+  formatDate = (): string => {
+    if (typeof this.state.selectedUSAState.date === 'number') {
+      let rawDate = this.state.selectedUSAState.date?.toString();
+      let year = rawDate.substring(0, 4);
+      let month = rawDate.substring(4, 6);
+      let day = rawDate.substring(6, 8);
+
+      let formattedDate = `${month}/${day}/${year}`;
+      return formattedDate;
+    }  
+    return '--/--/----';
   }
 
   render() {
@@ -96,7 +109,7 @@ class App extends Component<Props, State> {
         <main>
           <section>
             <USAState 
-              date={ this.state.selectedUSAState.date }
+              date={ this.formatDate() }
             />
           </section>
           <section className='stats-container'>
