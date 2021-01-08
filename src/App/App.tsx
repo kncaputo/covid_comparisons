@@ -14,7 +14,8 @@ interface Props {
 
 interface State {
   allUSAData: Details, 
-  selectedUSAState: Details
+  selectedUSAState: Details,
+  selectedComparison: string
 }
 
 interface Details {
@@ -41,7 +42,8 @@ class App extends Component<Props, State> {
         positive: 0,
         hospitalizedCurrently: 0,
         death: 0
-      }
+      },
+      selectedComparison: ''
     }
   }
 
@@ -89,10 +91,11 @@ class App extends Component<Props, State> {
     return '--/--/----';
   }
 
-  handleComparisonClick(dropdownValue: ComparisonCategory): void {
+  handleComparisonClick = (dropdownValue: ComparisonCategory): void => {
     let comparisonStats = comparisonData.find(datum => {
       return datum.category === dropdownValue;
     })
+    this.setState({ selectedComparison: dropdownValue })
     console.log(comparisonStats)
   }
 
