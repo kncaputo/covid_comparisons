@@ -1,6 +1,6 @@
 import './Stat.scss';
 
-const Stat = (prop: { icon: any, number?: number, title: string, details: string }) => {
+const Stat = (prop: { icon: any, number: string, title: string, details: string }) => {
   return(
     <section className='stats' data-testid={prop.title.toLowerCase()}>
       <p className={prop.title.toLowerCase()}>{ <prop.icon /> }</p>

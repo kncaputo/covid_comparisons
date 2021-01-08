@@ -115,19 +115,19 @@ class App extends Component<Props, State> {
           <section className='stats-container'>
             <Stat 
               icon={ RiVirusFill }
-              number={ this.state.selectedUSAState.positive }
+              number={ new Intl.NumberFormat('en-US').format(this.state.selectedUSAState.positive) }
               title={ 'Cases' }
               details={ `This represents ${((this.state.selectedUSAState.positive / this.state.allUSAData.positive) * 100).toFixed(1)}% of all cases.` }
             />
             <Stat 
               icon={ GiCoffin }
-              number={ this.state.selectedUSAState.death }
+              number={ new Intl.NumberFormat('en-US').format(this.state.selectedUSAState.death) }
               title={ 'Deaths' }
               details={ `This represents ${((this.state.selectedUSAState.death / this.state.allUSAData.death) * 100).toFixed(1)}% of all deaths.` }
             />
             <Stat 
               icon={ RiHospitalFill }
-              number={ this.state.selectedUSAState.hospitalizedCurrently }
+              number={ new Intl.NumberFormat('en-US').format(this.state.selectedUSAState.hospitalizedCurrently) }
               title={ 'Current Hospitalizations' }
               details={ `This represents ${((this.state.selectedUSAState.hospitalizedCurrently / this.state.allUSAData.hospitalizedCurrently) * 100).toFixed(1)}% of all current hospitalizations.` }
             />
