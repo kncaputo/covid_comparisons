@@ -5,6 +5,7 @@ const ComparisonDetails = (prop: { selection: string }) => {
   return(
       <section>
         <p>This is ComparisonDetails Component</p>
+        {prop.selection}
       </section>
   )
 }

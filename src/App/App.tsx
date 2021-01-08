@@ -97,7 +97,6 @@ class App extends Component<Props, State> {
       return datum.category === dropdownValue;
     })
     this.setState({ selectedComparison: dropdownValue })
-    console.log(comparisonStats)
   }
 
   render() {
@@ -165,7 +164,7 @@ class App extends Component<Props, State> {
               />
             )
           }}
-          >
+        >
         </Route>
       </Switch>
     )
