@@ -6,6 +6,7 @@ import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
 import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import { Route } from 'react-router-dom';
+import { comparisonData } from '../comparisonData';
 import './App.scss';
 
 interface Props { 
@@ -89,7 +90,7 @@ class App extends Component<Props, State> {
   }
 
   handleComparisonClick(dropdownValue: string): void {
-    console.log(dropdownValue)
+    let comparisonStats = comparisonData[dropdownValue]
   }
 
   render() {
