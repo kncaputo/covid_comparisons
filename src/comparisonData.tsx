@@ -1,5 +1,5 @@
 export type ComparisonCategory = 'default' | 'worldWar' | '911'| 'shark-attacks' 
-  | 'car-crash-fatalities-2020' | 'flu-fatalities-2020' | 'Hurricane Katrina'
+  | 'car-crash-fatalities-2020' | 'flu-fatalities-2020' | 'hurricane-katrina'
 
 export type ComparisonData = {
   [key: string]: string | number
@@ -49,7 +49,7 @@ export const comparisonData: Comparison[] = [
       deaths: 100
     }
   } , {
-    category: 'Hurricane Katrina', 
+    category: 'hurricane-katrina', 
     data: {
       title: 'Hurricane Katrina Fatalities',
       deaths: 100

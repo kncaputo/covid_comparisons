@@ -153,11 +153,6 @@ class App extends Component<Props, State> {
                     details={ `This represents ${((this.state.selectedUSAState.hospitalizedCurrently / this.state.allUSAData.hospitalizedCurrently) * 100).toFixed(1)}% of all current hospitalizations.` }
                   />
                 </section>
-                <nav>
-                  <ComparisonContainer 
-                    handleComparisonClick={this.handleComparisonClick}
-                  />
-                </nav>
               </main>
             </section>
           </Route>
@@ -174,6 +169,11 @@ class App extends Component<Props, State> {
           >
           </Route>
         </Switch>
+        <nav>
+          <ComparisonContainer 
+            handleComparisonClick={this.handleComparisonClick}
+          />
+        </nav>
       </>
     )
   }
