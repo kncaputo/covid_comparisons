@@ -158,7 +158,7 @@ class App extends Component<Props, State> {
           </Route>
           <Route 
             exact 
-            path='/:dropdownValue' 
+            path='/:dropdownValue(default|911|d-day)' 
             render={() => {
               return (
                 <ComparisonDetails
