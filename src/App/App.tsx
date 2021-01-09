@@ -5,7 +5,7 @@ import Stat from '../Stat/Stat';
 import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
 import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
-import { Route, Switch, useParams } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import { comparisonData, ComparisonCategory, Comparison } from '../comparisonData';
 import './App.scss';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
@@ -124,8 +124,10 @@ class App extends Component<Props, State> {
     return(
       <>
         <header>
-          <h1 className='title'>C🦠C🦠</h1>
-          <h3 className='tagline'>Covid Comparisons</h3>
+          <NavLink to='/' className='header'> 
+            <h1 className='title'>C🦠C🦠</h1>
+            <h3 className='tagline'>Covid Comparisons</h3>
+          </NavLink>
         </header>
         <Switch>
           <Route exact path='/'>

@@ -1,22 +1,29 @@
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #F2F2F2;
 }
 
-header {
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
 }
 
 .title {
   font-family: 'Raleway', sans-serif;
   font-size: 7em;
   margin: 0;
+  color: black;
 }
 
 .tagline {
   font-family: 'Heebo', sans-serif;
   margin: 0em 0em 1em 0em;
+  color: black;
 }
 
 .usa-overview {
