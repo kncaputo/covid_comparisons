@@ -1,8 +1,28 @@
-import React from 'react';
-import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { comparisonData } from '../comparisonData';
 import './ComparisonContainer.scss';
 
-const ComparisonContainer = () => {
+const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string): any}) => {
+  const [dropdownValue, setDropdownValue] = useState('default')
+  
+  let handleChange = (event: any) => {
+    setDropdownValue(event.target.value)
+  }
+
+  const createDropdownValues = (): JSX.Element[] => {
+   return comparisonData.map(data => {
+      return(
+        <option 
+          id={`dropdown-${data.id}`} 
+          key={`dropdown-${data.id}`} 
+          value={`${data.category}`}>
+            {`${data.data.title}`}
+        </option>
+      );  
+    })
+  }
+
   return(
     <section className='comparison-container'>
       <h3 className='comparison-title'>How Does It Compare?</h3>
@@ -14,15 +34,13 @@ const ComparisonContainer = () => {
             the dropdown menu below to see how the deaths in this state compare 
             to other castastrophic events in history.</p>
         </section>
-        <select id='dropdown' data-testid='dropdown'>
-          <option id='dropdown-value' value="9/11">9/11</option>
-          <option id='dropdown-value' value="WWII">WWII</option>
-          <option id='dropdown-value' value="Shark Attacks">Shark Attacks</option>
-          <option id='dropdown-value' value="Car Crash Fatalities (2019)">Car Crash Fatalities (2019)</option>
-          <option id='dropdown-value' value="Flu Fatalities (2019)">Flu Fatalities (2019)</option>
-          <option id='dropdown-value' value="Hurricane Katrina">Hurricane Katrina</option>
+        <select id='dropdown' data-testid='dropdown' onChange={handleChange}>
+          {createDropdownValues()}
         </select>
       </section>
+      <Link to={`/${dropdownValue}`}>
+        <button className='comparison-button' onClick={() => prop.handleComparisonClick(dropdownValue)}>View Comparison</button>
+      </Link>
     </section>
   )
 }
