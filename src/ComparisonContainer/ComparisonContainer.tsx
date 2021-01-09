@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
 import './ComparisonContainer.scss';
 
 const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string): any}) => {
@@ -24,7 +23,7 @@ const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string
         <select id='dropdown' data-testid='dropdown' onChange={handleChange}>
           <option id='dropdown-value' value='default'>Select a Comparison</option>
           <option id='dropdown-value' value='911'>9/11</option>
-          <option id='dropdown-value' value='worldWar'>WWII</option>
+          <option id='dropdown-value' value='d-day'>D-Day Deaths (World War II)</option>
           <option id='dropdown-value' value='shark-attacks'>Shark Attacks</option>
           <option id='dropdown-value' value='car-crash-fatalities-2020'>Car Crash Fatalities (2020)</option>
           <option id='dropdown-value' value='flu-fatalities-2020'>Flu Fatalities (2020)</option>
