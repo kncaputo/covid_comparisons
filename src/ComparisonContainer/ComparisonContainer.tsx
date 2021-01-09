@@ -10,11 +10,17 @@ const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string
     setDropdownValue(event.target.value)
   }
 
-  const createDropdownValues = () => {
-    comparisonData.map(comparison => {
-      return <option id='dropdown-value' value='default'>Select a Comparison</option>
+  const createDropdownValues = (): JSX.Element[] => {
+   return comparisonData.map(data => {
+      return(
+        <option 
+          id={`dropdown-${data.id}`} 
+          key={`dropdown-${data.id}`} 
+          value={`${data.category}`}>
+            {`${data.data.title}`}
+        </option>
+      );  
     })
-  
   }
 
   return(
@@ -30,13 +36,6 @@ const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string
         </section>
         <select id='dropdown' data-testid='dropdown' onChange={handleChange}>
           {createDropdownValues()}
-          <option id='dropdown-value' value='default'>Select a Comparison</option>
-          <option id='dropdown-value' value='911'>9/11</option>
-          <option id='dropdown-value' value='d-day'>D-Day Deaths (World War II)</option>
-          <option id='dropdown-value' value='shark-attacks'>Shark Attacks</option>
-          <option id='dropdown-value' value='car-crash-fatalities-2020'>Car Crash Fatalities (2020)</option>
-          <option id='dropdown-value' value='flu-fatalities-2020'>Flu Fatalities (2020)</option>
-          <option id='dropdown-value' value='hurricane-katrina'>Hurricane Katrina</option>
         </select>
       </section>
       <Link to={`/${dropdownValue}`}>

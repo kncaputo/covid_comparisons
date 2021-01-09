@@ -45,10 +45,12 @@ class App extends Component<Props, State> {
         death: 0
       },
       selectedComparison: {
+        id: 0,
         category: 'default',
         data: {
           title: '',
-          deaths: 0
+          deaths: 0,
+          image: ''
         }
       }
     }
@@ -158,7 +160,7 @@ class App extends Component<Props, State> {
           </Route>
           <Route 
             exact 
-            path='/:dropdownValue(default|911|d-day)' 
+            path='/:dropdownValue' 
             render={() => {
               return (
                 <ComparisonDetails
