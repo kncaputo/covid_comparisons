@@ -1,4 +1,4 @@
-export type ComparisonCategory = 'default' | 'd-day' | '911'| 'shark-attacks' 
+export type ComparisonCategory = 'default' | 'd-day' | 'sept11'| 'shark-attacks' 
   | 'car-crash-fatalities-2020' | 'flu-fatalities-2020' | 'hurricane-katrina'
 
 export type ComparisonData = {
@@ -23,7 +23,7 @@ export const comparisonData: Comparison[] = [
   },
   {
     id: 2,
-    category: '911', 
+    category: 'sept11', 
     data: {
       title: '9/11 Deaths',
       deaths: 2977,

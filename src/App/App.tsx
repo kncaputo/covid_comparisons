@@ -5,7 +5,7 @@ import Stat from '../Stat/Stat';
 import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
 import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useParams } from 'react-router-dom';
 import { comparisonData, ComparisonCategory, Comparison } from '../comparisonData';
 import './App.scss';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
@@ -27,6 +27,11 @@ interface Details {
   death: number
 }
 
+// enum DropdownCategory {
+//   Sept11 = 'sept11',
+//   Dday = 'd-day'
+  
+// }
 
 class App extends Component<Props, State> {
   constructor(props: Props) {
@@ -107,6 +112,14 @@ class App extends Component<Props, State> {
     this.setState({ selectedComparison: comparisonStats })
   }
 
+  blockUnintededRoutes = (): string => {
+    let list = comparisonData.reduce((comparisonCategory, cat) => {
+      comparisonCategory += '|' + cat.category
+      return comparisonCategory
+    }, '')
+    return list.slice(0)
+  }
+
   render() {
     return(
       <>
@@ -160,7 +173,7 @@ class App extends Component<Props, State> {
           </Route>
           <Route 
             exact 
-            path='/:dropdownValue' 
+            path={`/:dropdownValue(${this.blockUnintededRoutes()})`} 
             render={() => {
               return (
                 <ComparisonDetails
