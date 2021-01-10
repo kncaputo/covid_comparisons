@@ -4,7 +4,7 @@ import { comparisonData } from '../comparisonData';
 import './ComparisonContainer.scss';
 
 const ComparisonContainer = (prop: { className: string, handleComparisonClick(dropdownValue: string): any}) => {
-  const [dropdownValue, setDropdownValue] = useState('default')
+  const [dropdownValue, setDropdownValue] = useState('')
   
   let handleChange = (event: any) => {
     setDropdownValue(event.target.value)
@@ -41,8 +41,9 @@ const ComparisonContainer = (prop: { className: string, handleComparisonClick(dr
           <option 
             id='dropdown-default'
             key='dropdown-default'
-            value='default'
-            disabled>
+            value='select-a-comparison'
+            disabled
+            selected>
             Select a Comparison Category
           </option>  
           {createDropdownValues()}

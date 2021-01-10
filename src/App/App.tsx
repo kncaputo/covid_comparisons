@@ -106,12 +106,12 @@ class App extends Component<Props, State> {
   }
 
   handleComparisonClick = (dropdownValue: ComparisonCategory): void => {
-    if (dropdownValue) {
+    // if (dropdownValue) {
       let comparisonStats = comparisonData.find(datum => {
         return datum.category === dropdownValue;
       })
       this.setState({ selectedComparison: comparisonStats })
-    }
+    // }
   }
 
   blockUnintededRoutes = (): string => {
@@ -119,7 +119,7 @@ class App extends Component<Props, State> {
       comparisonCategory += '|' + cat.category
       return comparisonCategory
     }, '')
-    return list.slice(2)
+    return list
   }
 
   clearSelectedComparison = (): any => {
@@ -146,7 +146,7 @@ class App extends Component<Props, State> {
             <h3 className='tagline'>Covid Comparisons</h3>
           </NavLink>
         </header>
-        {!this.state.selectedComparison?.category &&
+        {this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
               className='top-dropdown'
@@ -211,7 +211,7 @@ class App extends Component<Props, State> {
           >
           </Route>
         </Switch>
-        {this.state.selectedComparison?.category &&
+        {!this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
               className='bottom-dropdown'
