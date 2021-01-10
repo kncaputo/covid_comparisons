@@ -1,4 +1,4 @@
-export type ComparisonCategory = 'default' | 'd-day' | 'sept11'| 'shark-attacks' 
+export type ComparisonCategory = 'd-day' | 'sept11'| 'shark-attacks' 
   | 'car-crash-fatalities-2020' | 'flu-fatalities-2020' | 'hurricane-katrina'
 
 export type ComparisonData = {
@@ -7,20 +7,11 @@ export type ComparisonData = {
 
 export interface Comparison {
   id: number,
-  category: ComparisonCategory,
+  category: ComparisonCategory | undefined,
   data: ComparisonData
 }
 
 export const comparisonData: Comparison[] = [
-  { 
-    id: 1,
-    category: 'default', 
-    data: {
-      title: '',
-      deaths: 0,
-      image: ''
-    }
-  },
   {
     id: 2,
     category: 'sept11', 
