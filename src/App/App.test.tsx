@@ -84,6 +84,28 @@ describe('App', () => {
       expect(cases).toBeInTheDocument();
       expect(deaths).toBeInTheDocument();
       expect(currentHospitalizations).toBeInTheDocument();
+    });
+
+    it('should render a new comparison on dropdown change and button click', async () => {
+      const accessDropdown = screen.getByTestId('dropdown');
+      const viewComparisonButton = screen.getByText('View Comparison');
+      
+      userEvent.selectOptions(accessDropdown, ['sept11']);
+      userEvent.click(viewComparisonButton);
+      
+      expect(screen.queryByText('USA Overview:')).not.toBeInTheDocument();
+      expect(screen.queryByText('Cases')).not.toBeInTheDocument();
+      expect(screen.queryByText('Deaths')).not.toBeInTheDocument();
+      expect(screen.queryByText('Current Hospitalizations')).not.toBeInTheDocument();
+
+      const sept11Deaths = await waitFor(() => screen.getByText(2977));
+      expect(sept11Deaths).toBeInTheDocument();
+      
+      userEvent.selectOptions(accessDropdown, ['shark-attacks']);
+      userEvent.click(viewComparisonButton);
+
+      const ddayDeaths = await waitFor(() => screen.getByText(41));
+      expect(ddayDeaths).toBeInTheDocument();
     })
 
   // describe('Methods', () => {
