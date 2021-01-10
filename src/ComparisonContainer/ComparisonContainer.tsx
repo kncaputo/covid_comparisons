@@ -56,7 +56,7 @@ const ComparisonContainer = (prop: { className: string, handleComparisonClick(dr
           </select>
           <section>
             <Link to={`/${dropdownValue}`}>
-              <button className='comparison-button' onClick={() => prop.handleComparisonClick(dropdownValue)}>View Comparison</button>
+              <button id='comparison-button' onClick={() => prop.handleComparisonClick(dropdownValue)}>View Comparison</button>
             </Link>
           </section>
         </section>
