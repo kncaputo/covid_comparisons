@@ -67,16 +67,25 @@ describe('App', () => {
       const viewComparisonButton = screen.getByText('View Comparison');
       const title = screen.getByText('C🦠C🦠');
       const usaOverview = screen.getByText('USA Overview:')
+      const cases = screen.getByText('Cases');
+      const deaths = screen.getByText('Deaths');
+      const currentHospitalizations = screen.getByText('Current Hospitalizations');
       
-      userEvent.selectOptions(accessDropdown, ['sept11'] );
+      userEvent.selectOptions(accessDropdown, ['sept11']);
       userEvent.click(viewComparisonButton);
       
-      expect(screen.queryByText('USA Overview:')).not.toBeInTheDocument()
+      expect(screen.queryByText('USA Overview:')).not.toBeInTheDocument();
+      expect(screen.queryByText('Cases')).not.toBeInTheDocument();
+      expect(screen.queryByText('Deaths')).not.toBeInTheDocument();
+      expect(screen.queryByText('Current Hospitalizations')).not.toBeInTheDocument();
       
-      userEvent.click(title)
+      userEvent.click(title);
 
       const overview = await waitFor(() => screen.getByText('USA Overview:'));
-      expect(overview).toBeInTheDocument()
+      expect(overview).toBeInTheDocument();
+      expect(cases).toBeInTheDocument();
+      expect(deaths).toBeInTheDocument();
+      expect(currentHospitalizations).toBeInTheDocument();
     })
 
   // describe('Methods', () => {
