@@ -63,14 +63,9 @@ describe('App', () => {
 
     it('should return home when title is clicked from comparison details page', async () => {
       const accessDropdown = screen.getByTestId('dropdown');
-      const sept11 = screen.getByTestId('3');
       const viewComparisonButton = screen.getByText('View Comparison');
       const title = screen.getByText('C🦠C🦠');
-      const usaOverview = screen.getByText('USA Overview:')
-      const cases = screen.getByText('Cases');
-      const deaths = screen.getByText('Deaths');
-      const currentHospitalizations = screen.getByText('Current Hospitalizations');
-      
+
       userEvent.selectOptions(accessDropdown, ['sept11']);
       userEvent.click(viewComparisonButton);
       
@@ -82,6 +77,9 @@ describe('App', () => {
       userEvent.click(title);
 
       const overview = await waitFor(() => screen.getByText('USA Overview:'));
+      const cases = await waitFor(() => screen.getByText('Cases'));
+      const deaths = await waitFor(() => screen.getByText('Deaths'));
+      const currentHospitalizations = await waitFor(() => screen.getByText('Current Hospitalizations'));
       expect(overview).toBeInTheDocument();
       expect(cases).toBeInTheDocument();
       expect(deaths).toBeInTheDocument();
