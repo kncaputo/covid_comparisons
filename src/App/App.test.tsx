@@ -1,5 +1,6 @@
 import App from './App';
 import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
 import { singleState, stateData, usaData } from '../sampleData';
 import '@testing-library/jest-dom';
@@ -51,8 +52,9 @@ describe('App', () => {
       const sept11 = screen.getByTestId('3');
       const viewComparisonButton = screen.getByText('View Comparison');
       
-      fireEvent.change(accessDropdown, {target: {value: sept11}});
-      fireEvent.click(viewComparisonButton);
+      userEvent.selectOptions(accessDropdown, ['sept11'] );
+      userEvent.click(viewComparisonButton);
+
 
       const death = await waitFor(() => screen.getByText(2977));
       expect(death).toBeInTheDocument()

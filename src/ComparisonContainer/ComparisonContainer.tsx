@@ -44,7 +44,8 @@ const ComparisonContainer = (prop: { className: string, handleComparisonClick(dr
             key='dropdown-default'
             value='select-a-comparison'
             disabled
-            selected>
+            selected
+            >
             Select a Comparison Category
           </option>  
           {createDropdownValues()}
