@@ -63,7 +63,14 @@ class App extends Component<Props, State> {
 
   componentDidMount() {
     fetchCurrentStateData()
-    .then(data => this.simplifyAPIDataForSingleState(data))
+    .then(data => {
+      if (window.location.pathname === '/') {
+        this.simplifyAPIDataForSingleState(data)
+      } else {
+        const category: string = window.location.pathname.slice(1)
+        this.handleComparisonClick(category)
+      }
+    })
     .catch(() => console.error);
 
     fetchAllCurrentUSAData()
@@ -105,13 +112,11 @@ class App extends Component<Props, State> {
     return '--/--/----';
   }
 
-  handleComparisonClick = (dropdownValue: ComparisonCategory): void => {
-    // if (dropdownValue) {
-      let comparisonStats = comparisonData.find(datum => {
-        return datum.category === dropdownValue;
-      })
-      this.setState({ selectedComparison: comparisonStats })
-    // }
+  handleComparisonClick = (dropdownValue: ComparisonCategory | string): void => {
+    let comparisonStats = comparisonData.find(datum => {
+      return datum.category === dropdownValue;
+    })
+    this.setState({ selectedComparison: comparisonStats })
   }
 
   blockUnintededRoutes = (): string => {
