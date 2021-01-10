@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { comparisonData } from '../comparisonData';
 import './ComparisonContainer.scss';
 
-const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string): any}) => {
+const ComparisonContainer = (prop: { className: string, handleComparisonClick(dropdownValue: string): any}) => {
   const [dropdownValue, setDropdownValue] = useState('default')
   
   let handleChange = (event: any) => {
@@ -34,7 +34,17 @@ const ComparisonContainer = (prop: { handleComparisonClick(dropdownValue: string
             the dropdown menu below to see how the deaths in this state compare 
             to other castastrophic events in history.</p>
         </section>
-        <select id='dropdown' data-testid='dropdown' onChange={handleChange}>
+        <select 
+          id='dropdown' 
+          data-testid='dropdown'
+          onChange={handleChange}>
+          <option 
+            id='dropdown-default'
+            key='dropdown-default'
+            value='default'
+            disabled>
+            Select a Comparison Category
+          </option>  
           {createDropdownValues()}
         </select>
       </section>

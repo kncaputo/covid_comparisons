@@ -51,7 +51,7 @@ class App extends Component<Props, State> {
       },
       selectedComparison: {
         id: 0,
-        category: 'default',
+        category: undefined,
         data: {
           title: '',
           deaths: 0,
@@ -106,10 +106,12 @@ class App extends Component<Props, State> {
   }
 
   handleComparisonClick = (dropdownValue: ComparisonCategory): void => {
-    let comparisonStats = comparisonData.find(datum => {
-      return datum.category === dropdownValue;
-    })
-    this.setState({ selectedComparison: comparisonStats })
+    if (dropdownValue) {
+      let comparisonStats = comparisonData.find(datum => {
+        return datum.category === dropdownValue;
+      })
+      this.setState({ selectedComparison: comparisonStats })
+    }
   }
 
   blockUnintededRoutes = (): string => {
@@ -117,13 +119,13 @@ class App extends Component<Props, State> {
       comparisonCategory += '|' + cat.category
       return comparisonCategory
     }, '')
-    return list.slice(0)
+    return list.slice(2)
   }
 
   clearSelectedComparison = (): any => {
     this.setState({ selectedComparison: {
       id: 0,
-      category: 'default',
+      category: undefined,
       data: {
         title: '',
         deaths: 0,
@@ -144,9 +146,10 @@ class App extends Component<Props, State> {
             <h3 className='tagline'>Covid Comparisons</h3>
           </NavLink>
         </header>
-        {this.state.selectedComparison?.category !== 'default' &&
+        {!this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
+              className='top-dropdown'
               handleComparisonClick={this.handleComparisonClick}
             />
           </nav>
@@ -208,9 +211,10 @@ class App extends Component<Props, State> {
           >
           </Route>
         </Switch>
-        {this.state.selectedComparison?.category === 'default' &&
+        {this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
+              className='bottom-dropdown'
               handleComparisonClick={this.handleComparisonClick}
             />
           </nav>
