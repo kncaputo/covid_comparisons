@@ -120,15 +120,37 @@ class App extends Component<Props, State> {
     return list.slice(0)
   }
 
+  clearSelectedComparison = (): any => {
+    this.setState({ selectedComparison: {
+      id: 0,
+      category: 'default',
+      data: {
+        title: '',
+        deaths: 0,
+        image: ''
+      }
+    }})
+  }
+
   render() {
     return(
       <>
         <header>
-          <NavLink to='/' className='header'> 
+          <NavLink 
+            to='/' 
+            className='header'
+            onClick={this.clearSelectedComparison}> 
             <h1 className='title'>C🦠C🦠</h1>
             <h3 className='tagline'>Covid Comparisons</h3>
           </NavLink>
         </header>
+        {this.state.selectedComparison?.category !== 'default' &&
+          <nav>
+            <ComparisonContainer 
+              handleComparisonClick={this.handleComparisonClick}
+            />
+          </nav>
+        }
         <Switch>
           <Route exact path='/'>
             <section>
@@ -186,11 +208,13 @@ class App extends Component<Props, State> {
           >
           </Route>
         </Switch>
-        <nav>
-          <ComparisonContainer 
-            handleComparisonClick={this.handleComparisonClick}
-          />
-        </nav>
+        {this.state.selectedComparison?.category === 'default' &&
+          <nav>
+            <ComparisonContainer 
+              handleComparisonClick={this.handleComparisonClick}
+            />
+          </nav>
+        }
       </>
     )
   }
