@@ -14,6 +14,7 @@ const ComparisonContainer = (prop: { className: string, handleComparisonClick(dr
    return comparisonData.map(data => {
       return(
         <option 
+          data-testid={`${data.id}`}
           id={`dropdown-${data.id}`} 
           key={`dropdown-${data.id}`} 
           value={`${data.category}`}>
@@ -43,7 +44,8 @@ const ComparisonContainer = (prop: { className: string, handleComparisonClick(dr
             key='dropdown-default'
             value='select-a-comparison'
             disabled
-            selected>
+            selected
+            >
             Select a Comparison Category
           </option>  
           {createDropdownValues()}

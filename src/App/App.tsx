@@ -64,12 +64,11 @@ class App extends Component<Props, State> {
   componentDidMount() {
     fetchCurrentStateData()
     .then(data => {
-      if (window.location.pathname === '/') {
-        this.simplifyAPIDataForSingleState(data)
-      } else {
+      this.simplifyAPIDataForSingleState(data)
+      if (window.location.pathname !== '/') {
         const category: string = window.location.pathname.slice(1)
         this.handleComparisonClick(category)
-      }
+      } 
     })
     .catch(() => console.error);
 
@@ -230,3 +229,4 @@ class App extends Component<Props, State> {
 }
 
 export default App;
+
