@@ -51,7 +51,7 @@ class App extends Component<Props, State> {
       },
       selectedComparison: {
         id: 0,
-        category: 'default',
+        category: undefined,
         data: {
           title: '',
           deaths: 0,
@@ -63,7 +63,14 @@ class App extends Component<Props, State> {
 
   componentDidMount() {
     fetchCurrentStateData()
-    .then(data => this.simplifyAPIDataForSingleState(data))
+    .then(data => {
+      if (window.location.pathname === '/') {
+        this.simplifyAPIDataForSingleState(data)
+      } else {
+        const category: string = window.location.pathname.slice(1)
+        this.handleComparisonClick(category)
+      }
+    })
     .catch(() => console.error);
 
     fetchAllCurrentUSAData()
@@ -105,7 +112,7 @@ class App extends Component<Props, State> {
     return '--/--/----';
   }
 
-  handleComparisonClick = (dropdownValue: ComparisonCategory): void => {
+  handleComparisonClick = (dropdownValue: ComparisonCategory | string): void => {
     let comparisonStats = comparisonData.find(datum => {
       return datum.category === dropdownValue;
     })
@@ -117,18 +124,41 @@ class App extends Component<Props, State> {
       comparisonCategory += '|' + cat.category
       return comparisonCategory
     }, '')
-    return list.slice(0)
+    return list
+  }
+
+  clearSelectedComparison = (): any => {
+    this.setState({ selectedComparison: {
+      id: 0,
+      category: undefined,
+      data: {
+        title: '',
+        deaths: 0,
+        image: ''
+      }
+    }})
   }
 
   render() {
     return(
       <>
         <header>
-          <NavLink to='/' className='header'> 
+          <NavLink 
+            to='/' 
+            className='header'
+            onClick={this.clearSelectedComparison}> 
             <h1 className='title'>C🦠C🦠</h1>
             <h3 className='tagline'>Covid Comparisons</h3>
           </NavLink>
         </header>
+        {this.state.selectedComparison?.category &&
+          <nav>
+            <ComparisonContainer 
+              className='top-dropdown'
+              handleComparisonClick={this.handleComparisonClick}
+            />
+          </nav>
+        }
         <Switch>
           <Route exact path='/'>
             <section>
@@ -186,11 +216,14 @@ class App extends Component<Props, State> {
           >
           </Route>
         </Switch>
-        <nav>
-          <ComparisonContainer 
-            handleComparisonClick={this.handleComparisonClick}
-          />
-        </nav>
+        {!this.state.selectedComparison?.category &&
+          <nav>
+            <ComparisonContainer 
+              className='bottom-dropdown'
+              handleComparisonClick={this.handleComparisonClick}
+            />
+          </nav>
+        }
       </>
     )
   }
