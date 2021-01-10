@@ -47,6 +47,7 @@ describe('App', () => {
     expect(dropdown).toBeInTheDocument();
     expect(casesIcon).toBeInTheDocument();
   });
+
   it('should render comparison details when a category is selected and the button is clicked', async () => {
       const accessDropdown = screen.getByTestId('dropdown');
       const sept11 = screen.getByTestId('3');
@@ -59,6 +60,25 @@ describe('App', () => {
       const death = await waitFor(() => screen.getByText(2977));
       expect(death).toBeInTheDocument()
     })
+
+    it('should return home when title is clicked from comparison details page', async () => {
+      const accessDropdown = screen.getByTestId('dropdown');
+      const sept11 = screen.getByTestId('3');
+      const viewComparisonButton = screen.getByText('View Comparison');
+      const title = screen.getByText('C🦠C🦠');
+      const usaOverview = screen.getByText('USA Overview:')
+      
+      userEvent.selectOptions(accessDropdown, ['sept11'] );
+      userEvent.click(viewComparisonButton);
+      
+      expect(screen.queryByText('USA Overview:')).not.toBeInTheDocument()
+      
+      userEvent.click(title)
+
+      const overview = await waitFor(() => screen.getByText('USA Overview:'));
+      expect(overview).toBeInTheDocument()
+    })
+
   // describe('Methods', () => {
   // it('should simplify data for single state', () => {
   //     const singleAPIData = simplifyAPIDataForSingleState(singleState)
