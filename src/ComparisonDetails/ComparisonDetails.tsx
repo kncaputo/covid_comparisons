@@ -16,8 +16,16 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
       return(
         <section>
           <p>Despite the staggering number of COVID-19 deaths in 2020, COVID-19 
-            deaths are equivalent to {(deathRatio * 100).toFixed(2)}% of all &nbsp;
+            deaths are only equivalent to {(deathRatio * 100).toFixed(1)}% of all &nbsp;
             {prop.selection?.data.title} deaths in all of the United States.
+          </p> 
+        </section>
+      )
+    } else {
+      return(
+        <section>
+          <p>The number of COVID-19 deaths in Colorado is equivalent to { deathRatio.toFixed(1) } times the 
+            number of all { prop.selection?.data.title }. 
           </p> 
         </section>
       )
