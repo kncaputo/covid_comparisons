@@ -1,34 +1,60 @@
-.comparison-container {
+@mixin flexbox-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: darkgrey;
+}
+
+$background-color: darkgrey;
+$comparison-button: #0C479D;
+$comparison-button-text: white;
+
+.details-view-comparison-container {
+  @include flexbox-center;
+  background-color: $background-color;
+}
+
+.app-view-comparison-container {
+  @include flexbox-center;
+  background-color: $background-color;
 }
 
 .comparison-title {
   font-family: 'Raleway', sans-serif;
   font-size: 2.5em;
-  margin: 1em 0em 0em 0em;
+  margin: 1em 0em 0.75em 0em;
 }
 
-.app-description {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 3em;
+#app-view-description {
+  @include flexbox-center;
+  margin: 1.25em 0 1em 0;
+  text-align: justify;
+}
+
+#app-view-description-container {
+  @include flexbox-center;
+  width: 25em;
+  text-align: justify;
+}
+
+#details-view-description-container {
+  display: none;
 }
 
 .paragraph2 {
-  margin: -1em 0em 1em 0em
+  margin: -1em 0em 1em 0em;
+}
+
+#dropdown-container {
+  @include flexbox-center;
 }
 
 #dropdown {
   display: flex;
   align-items: center;
   width: 25em;
-  height: 3em;
-  margin-left: 33%;
-  margin-top: 2em;
+  height: 2.25em;
+  margin-bottom: 1em;
+  font-size: medium;
   outline: none;
 }
 
@@ -37,10 +63,33 @@
   font-size: 2em;
 }
 
-.top-dropdown {
-  display: none;
+#comparison-button {
+  padding: .5em;
+  background-color: $comparison-button;
+  border: solid 2px $comparison-button;
+  color: $comparison-button-text;
+  border-radius: 5px;
+  margin-bottom: 2.6em;
 }
 
-.bottom-dropdown {
-  
+#comparison-button:hover {
+  cursor: pointer;
+  background-color: $comparison-button-text;
+  color: $comparison-button;
+  border: solid 2px $comparison-button;
+}
+
+// styles for iphone 
+@media only screen and (max-width: 736px) {
+  #dropdown {
+   width: 20em;
+  }
+
+  #app-view-description-container {
+    width: 22em;
+  }
+
+  .comparison-title {
+    font-size: 2em;
+  }
 }

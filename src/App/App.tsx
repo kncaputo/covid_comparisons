@@ -118,7 +118,7 @@ class App extends Component<Props, State> {
     this.setState({ selectedComparison: comparisonStats })
   }
 
-  blockUnintededRoutes = (): string => {
+  createRouteEndpoints = (): string => {
     let list = comparisonData.reduce((comparisonCategory, cat) => {
       comparisonCategory += '|' + cat.category
       return comparisonCategory
@@ -153,7 +153,7 @@ class App extends Component<Props, State> {
         {this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
-              className='top-dropdown'
+              styleId='details-view'
               handleComparisonClick={this.handleComparisonClick}
             />
           </nav>
@@ -167,9 +167,9 @@ class App extends Component<Props, State> {
                     USA Overview: &nbsp; &nbsp;
                   </section>
                   <section className='overview-stats'>
-                    <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.positive) }</span> cases &nbsp; &nbsp; &nbsp; &nbsp;
-                    <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.death) }</span> deaths &nbsp; &nbsp; &nbsp; &nbsp;
-                    <span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.hospitalizedCurrently) }</span> current hospitalizations 
+                    <section className='stat-box'><span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.positive) }</span> cases &nbsp; &nbsp; &nbsp; &nbsp;</section>
+                    <section className='stat-box'><span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.death) }</span> deaths &nbsp; &nbsp; &nbsp; &nbsp;</section>
+                    <section className='stat-box'><span className='overview-numbers'>{ new Intl.NumberFormat('en-US').format(this.state.allUSAData.hospitalizedCurrently) }</span> current hospitalizations</section>
                   </section>
                 </h3>
               </section>
@@ -204,7 +204,7 @@ class App extends Component<Props, State> {
           </Route>
           <Route 
             exact 
-            path={`/:dropdownValue(${this.blockUnintededRoutes()})`} 
+            path={`/:dropdownValue(${this.createRouteEndpoints()})`} 
             render={() => {
               return (
                 <ComparisonDetails
@@ -218,7 +218,7 @@ class App extends Component<Props, State> {
         {!this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
-              className='bottom-dropdown'
+              styleId='app-view'
               handleComparisonClick={this.handleComparisonClick}
             />
           </nav>
