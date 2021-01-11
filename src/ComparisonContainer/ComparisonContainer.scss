@@ -49,7 +49,8 @@ $comparison-button-text: white;
 }
 
 #dropdown {
-  @include flexbox-center;
+  display: flex;
+  align-items: center;
   width: 25em;
   height: 2.25em;
   margin-bottom: 1em;
