@@ -21,7 +21,7 @@ $comparison-button-text: white;
 .comparison-title {
   font-family: 'Raleway', sans-serif;
   font-size: 2.5em;
-  margin: 1em 0em 0em 0em;
+  margin: 1em 0em 0.75em 0em;
 }
 
 #app-view-description {
@@ -32,7 +32,7 @@ $comparison-button-text: white;
 
 #app-view-description-container {
   @include flexbox-center;
-  width: 400px;
+  width: 25em;
   text-align: justify;
 }
 
@@ -77,4 +77,19 @@ $comparison-button-text: white;
   background-color: $comparison-button-text;
   color: $comparison-button;
   border: solid 2px $comparison-button;
+}
+
+// styles for iphone 
+@media only screen and (max-width: 736px) {
+  #dropdown {
+   width: 20em;
+  }
+
+  #app-view-description-container {
+    width: 22em;
+  }
+
+  .comparison-title {
+    font-size: 2em;
+  }
 }
