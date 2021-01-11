@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { comparisonData } from '../comparisonData';
 import './ComparisonContainer.scss';
 
-const ComparisonContainer = (prop: { className: string, handleComparisonClick(dropdownValue: string): any}) => {
+const ComparisonContainer = (prop: { styleId: string, handleComparisonClick(dropdownValue: string): any}) => {
   const [dropdownValue, setDropdownValue] = useState('')
   
   let handleChange = (event: any) => {
@@ -28,8 +28,8 @@ const ComparisonContainer = (prop: { className: string, handleComparisonClick(dr
       <h3 className='comparison-title'>How Does It Compare?</h3>
       <section>
 
-        <article id='app-description-container'>
-          <section id='app-description'>
+        <article id={`${prop.styleId}-description-container`}>
+          <section id={`${prop.styleId}-description`}>
             <p>
               The number of deaths from the coronavirus is astounding but is often hard to picture the magnitude of.
             </p>

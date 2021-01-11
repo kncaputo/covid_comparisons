@@ -153,7 +153,7 @@ class App extends Component<Props, State> {
         {this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
-              className='top-dropdown'
+              styleId='details-view'
               handleComparisonClick={this.handleComparisonClick}
             />
           </nav>
@@ -218,7 +218,7 @@ class App extends Component<Props, State> {
         {!this.state.selectedComparison?.category &&
           <nav>
             <ComparisonContainer 
-              className='bottom-dropdown'
+              styleId='app-view'
               handleComparisonClick={this.handleComparisonClick}
             />
           </nav>
