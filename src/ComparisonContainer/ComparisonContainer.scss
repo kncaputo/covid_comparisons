@@ -1,8 +1,21 @@
-.comparison-container {
+@mixin flexbox-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: darkgrey;
+}
+
+$background-color: darkgrey;
+$comparison-button: #0C479D;
+$comparison-button-text: white;
+
+.details-view-comparison-container {
+  @include flexbox-center;
+  background-color: $background-color;
+}
+
+.app-view-comparison-container {
+  @include flexbox-center;
+  background-color: $background-color;
 }
 
 .comparison-title {
@@ -12,17 +25,13 @@
 }
 
 #app-view-description {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox-center;
   margin: 1.25em 0 1em 0;
   text-align: justify;
 }
 
 #app-view-description-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox-center;
   width: 400px;
   text-align: justify;
 }
@@ -32,18 +41,15 @@
 }
 
 .paragraph2 {
-  margin: -1em 0em 1em 0em
+  margin: -1em 0em 1em 0em;
 }
 
 #dropdown-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox-center;
 }
 
 #dropdown {
-  display: flex;
-  align-items: center;
+  @include flexbox-center;
   width: 25em;
   height: 2.25em;
   margin-bottom: 1em;
@@ -58,17 +64,16 @@
 
 #comparison-button {
   padding: .5em;
-  background-color: #0C479D;
-  border: solid 2px #0C479D;
-  color: white;
+  background-color: $comparison-button;
+  border: solid 2px $comparison-button;
+  color: $comparison-button-text;
   border-radius: 5px;
   margin-bottom: 2.6em;
-
 }
 
 #comparison-button:hover {
   cursor: pointer;
-  background-color: white;
-  color: #0C479D;
-  border: solid 2px #0C479D;
+  background-color: $comparison-button-text;
+  color: $comparison-button;
+  border: solid 2px $comparison-button;
 }

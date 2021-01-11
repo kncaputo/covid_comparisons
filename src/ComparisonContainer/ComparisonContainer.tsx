@@ -24,7 +24,8 @@ const ComparisonContainer = (prop: { styleId: string, handleComparisonClick(drop
   }
 
   return(
-    <section className='comparison-container'>
+    <section className={`${prop.styleId}-comparison-container`}>
+    {/* <section className='comparison-container'> */}
       <h3 className='comparison-title'>How Does It Compare?</h3>
       <section>
 
