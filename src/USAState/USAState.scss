@@ -21,3 +21,15 @@
   margin: 0;
   font-family: 'Heebo', sans-serif;
 }
+
+@media only screen and (max-width: 736px) {
+  .state-name {
+    font-size: 2.5em;
+    margin-right: 0.5em;
+  }
+
+  .state-image {
+    height: 6.75em;
+    margin-left: 2.5em;
+  }
+}
