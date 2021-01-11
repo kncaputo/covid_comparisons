@@ -43,6 +43,9 @@ body {
 }
 
 .overview-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   font-size: 0.9em;
   margin-top: 0.2em;
 }
@@ -57,4 +60,18 @@ body {
   flex-wrap: wrap;
   margin: 4em 1em 4em 1em;
   font-family: 'Heebo', sans-serif;
+}
+
+@media only screen and (max-width: 736px) {
+  .title {
+    font-size: 5.5em;
+  }
+
+  .overview-title {
+    font-size: 1.2em;
+  }
+
+  .overview-stats {
+    text-align: center;
+  }
 }
