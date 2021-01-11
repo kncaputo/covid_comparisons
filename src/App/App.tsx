@@ -209,6 +209,7 @@ class App extends Component<Props, State> {
               return (
                 <ComparisonDetails
                 selection={ this.state.selectedComparison }
+                usaStateDeaths={ this.state.selectedUSAState.death }
                 />
               )
             }}
