@@ -118,7 +118,7 @@ class App extends Component<Props, State> {
     this.setState({ selectedComparison: comparisonStats })
   }
 
-  blockUnintededRoutes = (): string => {
+  createRouteEndpoints = (): string => {
     let list = comparisonData.reduce((comparisonCategory, cat) => {
       comparisonCategory += '|' + cat.category
       return comparisonCategory
@@ -204,7 +204,7 @@ class App extends Component<Props, State> {
           </Route>
           <Route 
             exact 
-            path={`/:dropdownValue(${this.blockUnintededRoutes()})`} 
+            path={`/:dropdownValue(${this.createRouteEndpoints()})`} 
             render={() => {
               return (
                 <ComparisonDetails
