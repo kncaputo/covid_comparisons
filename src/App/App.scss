@@ -29,6 +29,7 @@ body {
 .usa-overview {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   font-family: 'Heebo', sans-serif;
   font-size: 1.2em;
@@ -53,6 +54,7 @@ body {
 .stats-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin: 4em 1em 4em 1em;
   font-family: 'Heebo', sans-serif;
 }
