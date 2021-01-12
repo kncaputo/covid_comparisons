@@ -74,10 +74,10 @@ class App extends Component<Props, State> {
     })
     .catch(() => console.error);
 
-    this.retireveUSAData()
+    this.retrieveUSAData()
   }
   
-  retireveUSAData = () => {
+  retrieveUSAData = () => {
     fetchAllCurrentUSAData()
     .then(data => {
       const simplifiedUSAData = simplifyAPIDataForAllStates(data[0])
