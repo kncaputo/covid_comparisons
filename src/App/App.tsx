@@ -7,6 +7,7 @@ import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { comparisonData, ComparisonCategory, Comparison } from '../comparisonData';
+import { simplifyAPIDataForSingleState, simplifyAPIDataForAllStates } from '../utilities/utilities';
 import './App.scss';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
 
@@ -64,7 +65,8 @@ class App extends Component<Props, State> {
   componentDidMount() {
     fetchCurrentStateData()
     .then(data => {
-      this.simplifyAPIDataForSingleState(data)
+      const simplifiedStateData = simplifyAPIDataForSingleState(data)
+      this.setState({ selectedUSAState: simplifiedStateData });
       if (window.location.pathname !== '/') {
         const category: string = window.location.pathname.slice(1)
         this.handleComparisonClick(category)
@@ -72,32 +74,18 @@ class App extends Component<Props, State> {
     })
     .catch(() => console.error);
 
+    this.retrieveUSAData()
+  }
+  
+  retrieveUSAData = () => {
     fetchAllCurrentUSAData()
-    .then(data => this.simplifyAPIDataForAllStates(data[0]))
+    .then(data => {
+      const simplifiedUSAData = simplifyAPIDataForAllStates(data[0])
+      this.setState({ allUSAData: simplifiedUSAData })
+    })
     .catch(() => console.error);
   }
-
-  simplifyAPIDataForSingleState = (data: { date: number, state: string, 
-    positive: number, hospitalizedCurrently: number, death: number }): void => { 
-      const stateData = {
-      date: data.date,
-      state: data.state,
-      positive: data.positive,
-      hospitalizedCurrently: data.hospitalizedCurrently,
-      death: data.death
-    }
-    this.setState({ selectedUSAState: stateData })
-  }
-
-  simplifyAPIDataForAllStates = (data: { positive: number, death: number, hospitalizedCurrently: number }): void => {
-    const USAData = {
-      positive: data.positive,
-      death: data.death,
-      hospitalizedCurrently: data.hospitalizedCurrently
-    }
-    this.setState({ allUSAData: USAData })
-  }
-
+  
   formatDate = (): string => {
     if (typeof this.state.selectedUSAState.date === 'number') {
       let rawDate = this.state.selectedUSAState.date?.toString();

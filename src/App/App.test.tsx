@@ -2,10 +2,9 @@ import App from './App';
 import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
-import { singleState, stateData, usaData } from '../sampleData';
+import { singleState, simplifiedStateData, usaData } from '../sampleData';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
-// const App = require('./App')
 jest.mock('../apiCalls');
  
 describe('App', () => {
@@ -111,7 +110,7 @@ describe('App', () => {
   // describe('Methods', () => {
   // it('should simplify data for single state', () => {
   //     const singleAPIData = simplifyAPIDataForSingleState(singleState)
-  //     expect(singleAPIData).toBe(stateData)
+  //     expect(singleAPIData).toBe(simplifiedStateData)
   //   });
   // })
   
