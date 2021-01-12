@@ -1,7 +1,14 @@
 .cards {
   border: solid black 1px;
+  padding: 20px;
+  margin: 35px;
+  height: 300px;
+  width: 250px;
 }
 
+.card-title {
+  text-align: center;
+}
 .usa-total-deaths-body {
   display: flex;
   flex-wrap: wrap;

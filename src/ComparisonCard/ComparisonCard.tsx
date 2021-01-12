@@ -4,7 +4,9 @@ const ComparisonCard = (prop: {title?: string, body?: JSX.Element[], text?: JSX.
   const generateComparisonCards = () => {
     return(
       <section className={`${prop.styleId}-cards cards`}>
-        <p>{prop.title}</p>
+        <section className='card-title'>
+          <p>{prop.title}</p>
+        </section>
         <section>{prop.text}</section>
         <section className={`${prop.styleId}-body`}>{prop.body}</section>
       </section>
