@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ComparisonCard from '../ComparisonCard/ComparisonCard';
 import './ComparisonDetails.scss';
 import { Comparison } from '../comparisonData';
@@ -6,7 +6,12 @@ import { FaMale } from 'react-icons/fa';
 
 const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
   const [stateDeathIcons] = useState<any>([])
-  const [comparisonDeathIcons] = useState<any>([])
+  const [comparisonDeathIcons, setComparisonDeathIcons] = useState<any>([])
+
+  useEffect(() => {
+    setComparisonDeathIcons([])
+    convertDeaths(comparisonDeathIcons, Number(prop.selection?.data.deaths))
+  }, [Number(prop.selection?.data.deaths)])
 
  const convertDeaths = (conversion: JSX.Element[], numDeaths: number): JSX.Element[] => {
     let deathConversion = Math.floor(numDeaths/100)
@@ -23,6 +28,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
     }
     return conversion
   }
+
   
   const compareStateDeathsToUSADeaths = () => {
     let percentOfAllUSADeaths = prop.usaStateDeaths / prop.totalUSADeaths;
