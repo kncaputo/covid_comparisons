@@ -70,6 +70,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
 
   return(
     <section>
+        <h1 className='key'><FaMale size={20}/> = 100 Deaths</h1>
         <section className='main'>
           <ComparisonCard
             title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
