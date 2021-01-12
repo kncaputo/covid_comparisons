@@ -7,7 +7,7 @@ import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { comparisonData, ComparisonCategory, Comparison } from '../comparisonData';
-import { simplifyAPIDataForSingleState, simplifyAPIDataForAllStates } from '../utilities';
+import { simplifyAPIDataForSingleState, simplifyAPIDataForAllStates } from '../utilities/utilities';
 import './App.scss';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
 
