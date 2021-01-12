@@ -34,7 +34,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
     let percentOfAllUSADeaths = prop.usaStateDeaths / prop.totalUSADeaths;
     return (
       <p>The number of deaths due to COVID-19 in the state of Colorado account
-        for { (percentOfAllUSADeaths * 100).toFixed(1) }% of all deaths in the United States.
+        for <span className='comparison-nums'>{ (percentOfAllUSADeaths * 100).toFixed(1) }%</span> of all deaths in the United States.
       </p>
     )
   }
@@ -50,17 +50,17 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   const generateComparisonText = (deathRatio: number): JSX.Element => {
     if(deathRatio < 1) {
       return(
-        <section className='comparison-text'>
-          <p>Despite the staggering number of COVID-19 deaths in 2020, COVID-19 
-            deaths are only equivalent to { (deathRatio).toFixed(1) }% of all &nbsp;
+        <section>
+          <p className='comparison-text'>Despite the staggering number of COVID-19 deaths in 2020, COVID-19 
+            deaths are only equivalent to <span className='comparison-nums'>{ (deathRatio).toFixed(1) }%</span> of all &nbsp;
             {prop.selection?.data.title} deaths in all of the United States.
           </p> 
         </section>
       )
     } else {
       return(
-        <section className='comparison-text'>
-          <p>The number of COVID-19 deaths in Colorado is equivalent to { deathRatio.toFixed(1) } times the 
+        <section>
+          <p className='comparison-text'>The number of COVID-19 deaths in Colorado is equivalent to <span className='comparison-nums'>{ deathRatio.toFixed(1) }</span> times the 
             number of all { prop.selection?.data.title }. 
           </p> 
         </section>

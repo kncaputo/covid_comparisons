@@ -13,3 +13,15 @@
   justify-content: center;
   font-size: 1.2em;
 }
+
+.comparison-nums {
+  display: flex;
+  justify-content: center;
+  font-size: 7em;
+}
+
+.comparison-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
