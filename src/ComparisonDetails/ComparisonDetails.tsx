@@ -1,6 +1,6 @@
-// import ComparisonCard from '../ComparisonCard/ComparisonCard'
+import ComparisonCard from '../ComparisonCard/ComparisonCard';
 import './ComparisonDetails.scss';
-import { Comparison } from '../comparisonData'
+import { Comparison } from '../comparisonData';
 
 const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
 
@@ -30,10 +30,11 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
     if (typeof prop.selection?.data.deaths === 'number') {
       let deathRatio = (prop.usaStateDeaths / prop.selection.data.deaths)
       return generateComparisonText(deathRatio)
-    }
+    } 
+    return 'Sorry no data available at this time.'
   }
 
-  const generateComparisonText = (deathRatio: number) => {
+  const generateComparisonText = (deathRatio: number): JSX.Element => {
     if(deathRatio < 1) {
       return(
         <section className='comparison-text'>
@@ -56,9 +57,9 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
 
   return(
     <section className='main'>
-      {/* <ComparisonCard
+      <ComparisonCard
       deathData={ prop }
-      comparisonText={ generateComparisonText } /> */}
+      comparisonText={ generateComparisonText } />
       <h2 id='page-title'>COVID-19 deaths compared to {prop.selection?.data.title}</h2>
       <section>
         <section>
