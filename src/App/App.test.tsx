@@ -56,7 +56,7 @@ describe('App', () => {
       userEvent.click(viewComparisonButton);
 
 
-      const death = await waitFor(() => screen.getByText(2977));
+      const death = await waitFor(() => screen.getByText('September 11th saw 2974 deaths.'));
       expect(death).toBeInTheDocument()
     })
 
