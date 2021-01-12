@@ -28,12 +28,6 @@ interface Details {
   death: number
 }
 
-// enum DropdownCategory {
-//   Sept11 = 'sept11',
-//   Dday = 'd-day'
-  
-// }
-
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
