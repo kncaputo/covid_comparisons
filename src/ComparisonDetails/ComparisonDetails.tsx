@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ComparisonCard from '../ComparisonCard/ComparisonCard';
 import './ComparisonDetails.scss';
 import { Comparison } from '../comparisonData';
-import { GiJigsawBox } from 'react-icons/gi';
 
 const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
   const [deathIcons, setDeathIcons] = useState<any>([])
@@ -62,30 +61,38 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   }
 
   return(
-    <section className='main'>
-      <ComparisonCard
-        title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
-        body={convertDeaths(prop.usaStateDeaths)}
-        styleId='usa-total-deaths'
-        key='1'
-      />
-      <ComparisonCard
-        title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
-        text={calculateDeathRatio()}
-        styleId='usa-total-deaths'
-        key='2'
-      />
-      <h2 id='page-title'>COVID-19 deaths compared to {prop.selection?.data.title}</h2>
-      <section>
-        <section>
-          <p></p>
-        </section>
-        <section>
-          <p>This is compared to {prop.usaStateDeaths } deaths in Colorado to date.</p>
-        </section>
+    <section>
+        <section className='main'>
+          <ComparisonCard
+            title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
+            body={convertDeaths(prop.usaStateDeaths)}
+            styleId='usa-total-deaths'
+            key='1'
+          />
+          <ComparisonCard
+            text={compareStateDeathsToUSADeaths()}
+            styleId='usa-total-deaths'
+            key='4'
+          />
+          <ComparisonCard
+            text={calculateDeathRatio()}
+            styleId='usa-total-deaths'
+            key='2'
+          />
+          <ComparisonCard
+            title={`This is compared to ${prop.usaStateDeaths } deaths in Colorado to date.`}
+            styleId='usa-total-deaths'
+            key='3'
+          />
+          <section>
+            <section>
+              <p></p>
+            </section>
+            <section>
+              <p>This is compared to {prop.usaStateDeaths } deaths in Colorado to date.</p>
+            </section>
+          </section>
       </section>
-      <p>{ calculateDeathRatio() }</p>
-      <p>{ compareStateDeathsToUSADeaths() }</p>
     </section>
   )
 }
