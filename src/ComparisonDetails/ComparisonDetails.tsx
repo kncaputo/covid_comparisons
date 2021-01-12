@@ -9,6 +9,10 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   const [comparisonDeathIcons, setComparisonDeathIcons] = useState<any>([])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  })
+
+  useEffect(() => {
     setComparisonDeathIcons([])
     convertDeaths(comparisonDeathIcons, Number(prop.selection?.data.deaths))
   }, [Number(prop.selection?.data.deaths)])
