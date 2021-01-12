@@ -56,7 +56,7 @@ export const singleState = {
   'grade': ''
 };
 
-export const stateData = {
+export const simplifiedStateData = {
   date: 20210106,
   state: 'CO',
   positive: 349450,
@@ -93,3 +93,9 @@ export const usaData = [
   'hash': '8b94b569a13f028a436bb04afd1161896baf6d2b'
   }
 ];
+
+export const simplifiedUSAData = {
+  positive: 21073841,
+  death: 352188,
+  hospitalizedCurrently: 132474
+}
