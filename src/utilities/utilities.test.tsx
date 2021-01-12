@@ -9,5 +9,9 @@ describe('utilities', () => {
     expect(simpleStateData).toStrictEqual(simplifiedStateData);
   });
 
- 
+  it('should simplify API data for all states when given a complex object', () => {
+    const simpleUSAData = simplifyAPIDataForAllStates(usaData[0]);
+
+    expect(simpleUSAData).toStrictEqual(simplifiedUSAData);
+  });
 })
