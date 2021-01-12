@@ -4,7 +4,7 @@ import './ComparisonDetails.scss';
 import { Comparison } from '../comparisonData';
 import { GiJigsawBox } from 'react-icons/gi';
 
-const ComparisonDetails = (prop: { selection: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
+const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
   const [deathIcons, setDeathIcons] = useState<any>([])
 
   const convertDeaths = (numDeaths: number): JSX.Element[] => {
@@ -22,15 +22,6 @@ const ComparisonDetails = (prop: { selection: Comparison, usaStateDeaths: number
       return displayDeaths(deathConversion - 1, arrayLength)
     }
     return deathIcons
-
-    // do {
-    //   let newIcon: JSX.Element = <p key={`${deathConversion}`}>X</p>
-    //   deathIcons.push(newIcon)
-    //   setDeathIcons(deathIcons)
-    // } while (
-    //   deathIcons.length < deathConversion
-    // )
-    // return deathIcons
   }
   
   const compareStateDeathsToUSADeaths = () => {
@@ -73,8 +64,8 @@ const ComparisonDetails = (prop: { selection: Comparison, usaStateDeaths: number
   return(
     <section className='main'>
       <ComparisonCard
-        title={`${ prop.selection.data.subtitle } saw ${prop.selection.data.deaths} deaths.`}
-        body={convertDeaths(prop.selection.data.deaths)}
+        title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
+        body={convertDeaths(prop.usaStateDeaths)}
         styleId='usa-total-deaths'
         key='1'
       />

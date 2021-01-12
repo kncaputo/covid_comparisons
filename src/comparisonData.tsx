@@ -7,7 +7,7 @@ export type ComparisonData = {
 
 export interface Comparison {
   id: number,
-  category: ComparisonCategory | undefined,
+  category: ComparisonCategory | string,
   data: ComparisonData
 }
 

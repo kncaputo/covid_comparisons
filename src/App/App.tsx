@@ -51,7 +51,7 @@ class App extends Component<Props, State> {
       },
       selectedComparison: {
         id: 0,
-        category: undefined,
+        category: '',
         data: {
           title: '',
           deaths: 0,
@@ -129,7 +129,7 @@ class App extends Component<Props, State> {
   clearSelectedComparison = (): any => {
     this.setState({ selectedComparison: {
       id: 0,
-      category: undefined,
+      category: '',
       data: {
         title: '',
         deaths: 0,
@@ -208,9 +208,9 @@ class App extends Component<Props, State> {
             render={() => {
               return (
                 <ComparisonDetails
-                selection={ this.state.selectedComparison }
-                usaStateDeaths={ this.state.selectedUSAState.death }
-                totalUSADeaths={ this.state.allUSAData.death }
+                  selection={ this.state.selectedComparison }
+                  usaStateDeaths={ this.state.selectedUSAState.death }
+                  totalUSADeaths={ this.state.allUSAData.death }
                 />
               )
             }}
