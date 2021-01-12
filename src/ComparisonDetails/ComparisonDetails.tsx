@@ -18,7 +18,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   }, [Number(prop.selection?.data.deaths)])
 
  const convertDeaths = (conversion: JSX.Element[], numDeaths: number): JSX.Element[] => {
-    let deathConversion = Math.floor(numDeaths/100)
+    let deathConversion = Math.floor(numDeaths/50)
     let arrayLength = deathConversion
     return displayDeaths(conversion, deathConversion, arrayLength)
   }
@@ -74,17 +74,17 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
 
   return(
     <section>
-        <h1 className='key'><FaMale size={20}/> = 100 Deaths</h1>
+        <h1 className='key'><FaMale size={20}/> = 50 Deaths</h1>
         <section className='main'>
           <ComparisonCard
-            title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
+            title={`${ prop.selection?.data.subtitle } saw ${new Intl.NumberFormat('en-US').format(Number(prop.selection?.data.deaths))} deaths.`}
             body={convertDeaths(comparisonDeathIcons, Number(prop.selection?.data.deaths))}
             styleId='usa-total-deaths'
             source={String(prop.selection?.data.source)}
             key='1'
           />
           <ComparisonCard
-            title={`This is compared to ${prop.usaStateDeaths } deaths in Colorado to date.`}
+            title={`This is compared to ${new Intl.NumberFormat('en-US').format(Number(prop.usaStateDeaths) )} deaths in Colorado to date.`}
             body={convertDeaths(stateDeathIcons, prop.usaStateDeaths)}
             styleId='usa-total-deaths'
             source='https://api.covidtracking.com/'
