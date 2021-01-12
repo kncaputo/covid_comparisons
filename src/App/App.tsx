@@ -7,6 +7,7 @@ import { GiCoffin } from 'react-icons/gi';
 import { RiVirusFill, RiHospitalFill } from 'react-icons/ri';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { comparisonData, ComparisonCategory, Comparison } from '../comparisonData';
+import { simplifyAPIDataForAllStates, simplifyAPIDataForSingleState }
 import './App.scss';
 import ComparisonDetails from '../ComparisonDetails/ComparisonDetails';
 
@@ -64,7 +65,8 @@ class App extends Component<Props, State> {
   componentDidMount() {
     fetchCurrentStateData()
     .then(data => {
-      this.simplifyAPIDataForSingleState(data)
+      const simplifiedStateData = simplifyAPIDataForSingleState(data)
+      this.setState({ selectedUSAState: simplifiedStateData });
       if (window.location.pathname !== '/') {
         const category: string = window.location.pathname.slice(1)
         this.handleComparisonClick(category)
@@ -76,27 +78,43 @@ class App extends Component<Props, State> {
     .then(data => this.simplifyAPIDataForAllStates(data[0]))
     .catch(() => console.error);
   }
+ 
+  // componentDidMount() {
+  //   fetchCurrentStateData()
+  //   .then(data => {
+  //     this.simplifyAPIDataForSingleState(data)
+  //     if (window.location.pathname !== '/') {
+  //       const category: string = window.location.pathname.slice(1)
+  //       this.handleComparisonClick(category)
+  //     } 
+  //   })
+  //   .catch(() => console.error);
 
-  simplifyAPIDataForSingleState = (data: { date: number, state: string, 
-    positive: number, hospitalizedCurrently: number, death: number }): void => { 
-      const stateData = {
-      date: data.date,
-      state: data.state,
-      positive: data.positive,
-      hospitalizedCurrently: data.hospitalizedCurrently,
-      death: data.death
-    }
-    this.setState({ selectedUSAState: stateData })
-  }
+  //   fetchAllCurrentUSAData()
+  //   .then(data => this.simplifyAPIDataForAllStates(data[0]))
+  //   .catch(() => console.error);
+  // }
 
-  simplifyAPIDataForAllStates = (data: { positive: number, death: number, hospitalizedCurrently: number }): void => {
-    const USAData = {
-      positive: data.positive,
-      death: data.death,
-      hospitalizedCurrently: data.hospitalizedCurrently
-    }
-    this.setState({ allUSAData: USAData })
-  }
+  // simplifyAPIDataForSingleState = (data: { date: number, state: string, 
+  //   positive: number, hospitalizedCurrently: number, death: number }): void => { 
+  //     const stateData = {
+  //     date: data.date,
+  //     state: data.state,
+  //     positive: data.positive,
+  //     hospitalizedCurrently: data.hospitalizedCurrently,
+  //     death: data.death
+  //   }
+  //   this.setState({ selectedUSAState: stateData })
+  // }
+
+  // simplifyAPIDataForAllStates = (data: { positive: number, death: number, hospitalizedCurrently: number }): void => {
+  //   const USAData = {
+  //     positive: data.positive,
+  //     death: data.death,
+  //     hospitalizedCurrently: data.hospitalizedCurrently
+  //   }
+  //   this.setState({ allUSAData: USAData })
+  // }
 
   formatDate = (): string => {
     if (typeof this.state.selectedUSAState.date === 'number') {
