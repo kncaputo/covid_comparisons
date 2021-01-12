@@ -21,7 +21,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   
   const displayDeaths = (conversion: JSX.Element[], deathConversion: number, arrayLength: number): JSX.Element[] => { 
     if (deathConversion >= 0 && conversion.length < arrayLength) {
-      let newIcon: JSX.Element = <p key={`${deathConversion}`}><FaMale /></p>
+      let newIcon: JSX.Element = <p className='people-icon' key={`${deathConversion}`}><FaMale size={20}/></p>
       conversion.push(newIcon)
 
       return displayDeaths(conversion, deathConversion - 1, arrayLength)
@@ -75,12 +75,14 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
             title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
             body={convertDeaths(comparisonDeathIcons, Number(prop.selection?.data.deaths))}
             styleId='usa-total-deaths'
+            source={String(prop.selection?.data.source)}
             key='1'
           />
           <ComparisonCard
             title={`This is compared to ${prop.usaStateDeaths } deaths in Colorado to date.`}
             body={convertDeaths(stateDeathIcons, prop.usaStateDeaths)}
             styleId='usa-total-deaths'
+            source='https://api.covidtracking.com/'
             key='2'
           />
           <ComparisonCard
