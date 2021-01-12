@@ -8,8 +8,9 @@ import { MemoryRouter } from 'react-router-dom';
 jest.mock('../apiCalls');
  
 describe('App', () => {
-  let mockedUSAFetch = fetchAllCurrentUSAData as jest.MockedFunction<typeof fetchAllCurrentUSAData>
-  let mockedSingleFetch = fetchCurrentStateData as jest.MockedFunction<typeof fetchCurrentStateData>
+  let mockedUSAFetch = fetchAllCurrentUSAData as jest.MockedFunction<typeof fetchAllCurrentUSAData>;
+  let mockedSingleFetch = fetchCurrentStateData as jest.MockedFunction<typeof fetchCurrentStateData>;
+  
   beforeEach(() => {
     mockedUSAFetch.mockResolvedValueOnce(usaData[0])
     mockedSingleFetch.mockResolvedValueOnce(singleState)

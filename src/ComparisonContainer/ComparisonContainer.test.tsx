@@ -5,7 +5,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 describe('ComparisonContainer', () => {
   it('should render correctly', () => {
-    const mockedHandleComparisonClick = jest.fn()
+    const mockedHandleComparisonClick = jest.fn();
+    
     render(
       <MemoryRouter>
         <ComparisonContainer 
