@@ -37,7 +37,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
       let deathRatio = (prop.usaStateDeaths / prop.selection.data.deaths)
       return generateComparisonText(deathRatio)
     } 
-    return 'Sorry no data available at this time.'
+    return <p>Sorry no data available at this time.</p>
   }
 
   const generateComparisonText = (deathRatio: number): JSX.Element => {
@@ -68,6 +68,12 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
         body={convertDeaths(prop.usaStateDeaths)}
         styleId='usa-total-deaths'
         key='1'
+      />
+      <ComparisonCard
+        title={`${ prop.selection?.data.subtitle } saw ${prop.selection?.data.deaths} deaths.`}
+        text={calculateDeathRatio()}
+        styleId='usa-total-deaths'
+        key='2'
       />
       <h2 id='page-title'>COVID-19 deaths compared to {prop.selection?.data.title}</h2>
       <section>
