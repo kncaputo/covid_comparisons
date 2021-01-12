@@ -1,22 +1,37 @@
+import React, { useState } from 'react';
 import ComparisonCard from '../ComparisonCard/ComparisonCard';
 import './ComparisonDetails.scss';
 import { Comparison } from '../comparisonData';
+import { GiJigsawBox } from 'react-icons/gi';
 
-const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
+const ComparisonDetails = (prop: { selection: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
+  const [deathIcons, setDeathIcons] = useState<any>([])
 
-  // function convertDeaths(numDeaths: number) {
-  //   let deathConversion = Math.floor(numDeaths/50)
-  //   displayDeaths(deathConversion)
-  // }
-  // let deathIcons = []
+  const convertDeaths = (numDeaths: number): JSX.Element[] => {
+    let deathConversion = Math.floor(numDeaths/100)
+    let arrayLength = deathConversion
+    return displayDeaths(deathConversion, arrayLength)
+  }
   
-  // function displayDeaths(deathConversion: number) { 
-  //   if (deathConversion <= 0) {
-  //     return deathIcons
-  //   }
-  //   deathIcons.push('X')
-  //   return displayDeaths(deathConversion - 1)
-  // }
+  const displayDeaths = (deathConversion: number, arrayLength: number): JSX.Element[] => { 
+    if (deathConversion >= 0 && deathIcons.length < arrayLength) {
+      let newIcon: JSX.Element = <p key={`${deathConversion}`}>X</p>
+      deathIcons.push(newIcon)
+      setDeathIcons(deathIcons)
+
+      return displayDeaths(deathConversion - 1, arrayLength)
+    }
+    return deathIcons
+
+    // do {
+    //   let newIcon: JSX.Element = <p key={`${deathConversion}`}>X</p>
+    //   deathIcons.push(newIcon)
+    //   setDeathIcons(deathIcons)
+    // } while (
+    //   deathIcons.length < deathConversion
+    // )
+    // return deathIcons
+  }
   
   const compareStateDeathsToUSADeaths = () => {
     let percentOfAllUSADeaths = prop.usaStateDeaths / prop.totalUSADeaths;
@@ -58,12 +73,15 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   return(
     <section className='main'>
       <ComparisonCard
-      deathData={ prop }
-      comparisonText={ generateComparisonText } />
+        title={`${ prop.selection.data.subtitle } saw ${prop.selection.data.deaths} deaths.`}
+        body={convertDeaths(prop.selection.data.deaths)}
+        styleId='usa-total-deaths'
+        key='1'
+      />
       <h2 id='page-title'>COVID-19 deaths compared to {prop.selection?.data.title}</h2>
       <section>
         <section>
-          <p>{ prop.selection?.data.title } saw {prop.selection?.data.deaths} deaths.</p>
+          <p></p>
         </section>
         <section>
           <p>This is compared to {prop.usaStateDeaths } deaths in Colorado to date.</p>
