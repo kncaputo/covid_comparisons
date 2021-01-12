@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ComparisonCard from '../ComparisonCard/ComparisonCard';
 import './ComparisonDetails.scss';
 import { Comparison } from '../comparisonData';
+import { FaMale } from 'react-icons/fa';
 
 const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: number, totalUSADeaths: number }) => {
   const [stateDeathIcons] = useState<any>([])
@@ -15,7 +16,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   
   const displayDeaths = (conversion: JSX.Element[], deathConversion: number, arrayLength: number): JSX.Element[] => { 
     if (deathConversion >= 0 && conversion.length < arrayLength) {
-      let newIcon: JSX.Element = <p key={`${deathConversion}`}>X</p>
+      let newIcon: JSX.Element = <p key={`${deathConversion}`}><FaMale /></p>
       conversion.push(newIcon)
 
       return displayDeaths(conversion, deathConversion - 1, arrayLength)
@@ -77,12 +78,12 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
             key='2'
           />
           <ComparisonCard
-            text={compareStateDeathsToUSADeaths()}
+            text={calculateDeathRatio()}
             styleId='usa-total-deaths'
             key='3'
           />
           <ComparisonCard
-            text={calculateDeathRatio()}
+            text={compareStateDeathsToUSADeaths()}
             styleId='usa-total-deaths'
             key='4'
           />
