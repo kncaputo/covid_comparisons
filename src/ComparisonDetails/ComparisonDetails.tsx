@@ -70,28 +70,20 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
             key='1'
           />
           <ComparisonCard
-            text={compareStateDeathsToUSADeaths()}
-            styleId='usa-total-deaths'
-            key='4'
-          />
-          <ComparisonCard
-            text={calculateDeathRatio()}
+            title={`This is compared to ${prop.usaStateDeaths } deaths in Colorado to date.`}
             styleId='usa-total-deaths'
             key='2'
           />
           <ComparisonCard
-            title={`This is compared to ${prop.usaStateDeaths } deaths in Colorado to date.`}
+            text={compareStateDeathsToUSADeaths()}
             styleId='usa-total-deaths'
             key='3'
           />
-          <section>
-            <section>
-              <p></p>
-            </section>
-            <section>
-              <p>This is compared to {prop.usaStateDeaths } deaths in Colorado to date.</p>
-            </section>
-          </section>
+          <ComparisonCard
+            text={calculateDeathRatio()}
+            styleId='usa-total-deaths'
+            key='4'
+          />
       </section>
     </section>
   )
