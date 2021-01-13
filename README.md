@@ -24,7 +24,7 @@
 3. `cd` into the cloned down directory on your local machine 
 4. Run `npm start` in the terminal 
 5. Navigate to the localhost url that is provided after running the last command
-6. To observe the robustness of the testing suite, run `npm test` in the terminal 
+6. To view the suite, run `npm test` in the terminal 
 
 ## How to Navigate
 
@@ -61,5 +61,6 @@
 - In addition to a homepage, the MVP was to include a page with more detailed specifics about COVID-19 in the state of Colorado and how those details hold up when compared with statistics from other historical events
 - We were able to achieve our MVP and then meet some additional stretch goals such as creating visual representations to help give a better perspective to visual learners 
 - Overall, the project went well and we not only achieved what we wanted, we believe that refactoring that we did along the way set us up well for additional extensions in the future
+- We were able to make a fully responsive app, incoperate Sass, and achieve over 93% test coverage on our functions.
 
   ![Test coverage](./src/assets/test_coverage.png)<br />
