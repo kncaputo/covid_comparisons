@@ -9,7 +9,7 @@ const ComparisonDetails = (prop: { selection?: Comparison, usaStateDeaths: numbe
   const [comparisonDeathIcons, setComparisonDeathIcons] = useState<any>([])
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   })
 
   useEffect(() => {

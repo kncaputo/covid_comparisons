@@ -2,15 +2,16 @@ import App from './App';
 import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
-import { singleState, simplifiedStateData, usaData } from '../sampleData';
+import { singleState, usaData } from '../sampleData';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 jest.mock('../apiCalls');
  
 describe('App', () => {
-  let mockedUSAFetch = fetchAllCurrentUSAData as jest.MockedFunction<typeof fetchAllCurrentUSAData>;
-  let mockedSingleFetch = fetchCurrentStateData as jest.MockedFunction<typeof fetchCurrentStateData>;
-  
+  const mockedUSAFetch = fetchAllCurrentUSAData as jest.MockedFunction<typeof fetchAllCurrentUSAData>;
+  const mockedSingleFetch = fetchCurrentStateData as jest.MockedFunction<typeof fetchCurrentStateData>;
+  window.scrollTo = jest.fn();
+
   beforeEach(() => {
     mockedUSAFetch.mockResolvedValueOnce(usaData[0])
     mockedSingleFetch.mockResolvedValueOnce(singleState)
@@ -21,7 +22,6 @@ describe('App', () => {
       </MemoryRouter>
     );
   });
-  afterEach(()=> cleanup())
 
   it('should render correctly', () => {
     const tagline = screen.getByText('Covid Comparisons');
@@ -50,14 +50,13 @@ describe('App', () => {
 
   it('should render comparison details when a category is selected and the button is clicked', async () => {
       const accessDropdown = screen.getByTestId('dropdown');
-      const sept11 = screen.getByTestId('3');
       const viewComparisonButton = screen.getByText('View Comparison');
       
       userEvent.selectOptions(accessDropdown, ['sept11'] );
       userEvent.click(viewComparisonButton);
 
 
-      const death = await waitFor(() => screen.getByText('September 11th saw 2974 deaths.'));
+      const death = await waitFor(() => screen.getByText('September 11th saw 2,974 deaths.'));
       expect(death).toBeInTheDocument()
     })
 
@@ -86,25 +85,29 @@ describe('App', () => {
       expect(currentHospitalizations).toBeInTheDocument();
     });
 
-    // it('should render a new comparison on dropdown change and button click', async () => {
-    //   const accessDropdown = screen.getByTestId('dropdown');
-    //   const viewComparisonButton = screen.getByText('View Comparison');
+    it('should render a new comparison on dropdown change and button click', async () => {
+      const accessDropdown = screen.getByTestId('dropdown');
+      const viewComparisonButton = screen.getByText('View Comparison');
       
-    //   userEvent.selectOptions(accessDropdown, ['sept11']);
-    //   userEvent.click(viewComparisonButton);
-      
-    //   expect(screen.queryByText('USA Overview:')).not.toBeInTheDocument();
-    //   expect(screen.queryByText('Cases')).not.toBeInTheDocument();
-    //   expect(screen.queryByText('Deaths')).not.toBeInTheDocument();
-    //   expect(screen.queryByText('Current Hospitalizations')).not.toBeInTheDocument();
+      userEvent.selectOptions(accessDropdown, ['sept11']);
+      userEvent.click(viewComparisonButton);
 
-    //   const sept11Deaths = await waitFor(() => screen.getByText('September 11th saw 2974 deaths.'));
-    //   expect(sept11Deaths).toBeInTheDocument();
+      const sept11Deaths = await waitFor(() => screen.getByText('September 11th saw 2,974 deaths.'));
       
-    //   userEvent.selectOptions(accessDropdown, ['flu-fatalities-2018']);
-    //   userEvent.click(viewComparisonButton);
+      expect(screen.queryByText('USA Overview:')).not.toBeInTheDocument();
+      expect(screen.queryByText('Cases')).not.toBeInTheDocument();
+      expect(screen.queryByText('Deaths')).not.toBeInTheDocument();
+      expect(screen.queryByText('Current Hospitalizations')).not.toBeInTheDocument();
 
-    //   const fluFatalities = await waitFor(() => screen.getByText('Colorado Flu Fatalities saw 568 deaths.'));
-    //   expect(fluFatalities).toBeInTheDocument();
-    // });
+      expect(sept11Deaths).toBeInTheDocument();
+
+      const newAccessDropdown = screen.getByTestId('dropdown');
+      const newViewComparisonButton = screen.getByText('View Comparison');
+
+      userEvent.selectOptions(newAccessDropdown, ['flu-fatalities-2018']);
+      userEvent.click(newViewComparisonButton);
+
+      const fluFatalities = await waitFor(() => screen.getByText('Colorado Flu Fatalities saw 568 deaths.'));
+      expect(fluFatalities).toBeInTheDocument();
+  });
 });
