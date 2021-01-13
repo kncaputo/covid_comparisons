@@ -18,6 +18,8 @@
 5. Navigate to the localhost url that is provided after running the last command
 6. To observe the robustness of the testing suite, run `npm test` in the terminal 
 
+  ![Test coverage](./src/assets/test_coverage.png)<br />
+
 ## How to Navigate
 
 1. Upon arriving on the homepage, a user will be greeted with an overview of the number of COVID-19 
