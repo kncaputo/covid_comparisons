@@ -23,7 +23,7 @@
 1. Upon arriving on the homepage, a user will be greeted with an overview of the number of COVID-19 
    cases, deaths, and hospitalizations in the entirety in the United States. 
 
-  ![Navigating the homepage](./selecting_category.gif)<br />
+  ![Navigating the homepage](./src/assets/selecting_category.gif)<br />
 
 2. Navigating further down the page, a user will see COVID-19 statistics for the state of Colorado and how that compares to the United States as a whole.
 
@@ -31,7 +31,7 @@
 
 4. Subsequently, a user will be brought to a new page that compares statistical information for the selected topic to the mortality statistics of the state of Colorado.
 
-  ![Choosing a different category](./selecting_different_category.gif)<br />
+  ![Choosing a different category](./src/assets/selecting_different_category.gif)<br />
 
 5. Once a user has observed the comparison data, they are able to select different selections from the dropdown menu to view statistics for a different subject matter. 
 
