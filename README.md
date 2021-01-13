@@ -61,6 +61,6 @@
 - In addition to a homepage, the MVP was to include a page with more detailed specifics about COVID-19 in the state of Colorado and how those details hold up when compared with statistics from other historical events
 - We were able to achieve our MVP and then meet some additional stretch goals such as creating visual representations to help give a better perspective to visual learners 
 - Overall, the project went well and we not only achieved what we wanted, we believe that refactoring that we did along the way set us up well for additional extensions in the future
-- We were able to make a fully responsive app, incoperate Sass, and achieve over 93% test coverage on our functions.
+- We were able to make a fully responsive app, incorporate Sass, and achieve over 93% test coverage on our functions.
 
   ![Test coverage](./src/assets/test_coverage.png)<br />
