@@ -1,0 +1,4 @@
+{
+  "typescript.tsserver.log": "terse",
+  "files.autoSave": "onWindowChange"
+}
