@@ -9,16 +9,22 @@
 
 - COVID Comparisons, or "COCO" for short, is an application that allows users to compare SARS-COV-19 statistics to other diseases and historical events.  The site is meant to bring some perspective to COVID-19's impact.  The various categories exist to give broader audiences something relatable that they may understand.  
 
+## Tech Used
+
+- TypeScript
+- React
+- Router
+- Jest
+- Sass
+
 ## Getting Started 
 
 1. Fork the repo by clicking the "Fork" button in the top right corner of the page
-2. Clone down your forked repo to your local machine by using the command `git clone [replace this with the SSH key for your repo]` in your terminal
+2. Clone down your forked repo to your local machine by using the command `git clone git@github.com:Codo-Baggins/covid_comparisons.git` in your terminal
 3. `cd` into the cloned down directory on your local machine 
 4. Run `npm start` in the terminal 
 5. Navigate to the localhost url that is provided after running the last command
 6. To observe the robustness of the testing suite, run `npm test` in the terminal 
-
-  ![Test coverage](./src/assets/test_coverage.png)<br />
 
 ## How to Navigate
 
@@ -55,3 +61,5 @@
 - In addition to a homepage, the MVP was to include a page with more detailed specifics about COVID-19 in the state of Colorado and how those details hold up when compared with statistics from other historical events
 - We were able to achieve our MVP and then meet some additional stretch goals such as creating visual representations to help give a better perspective to visual learners 
 - Overall, the project went well and we not only achieved what we wanted, we believe that refactoring that we did along the way set us up well for additional extensions in the future
+
+  ![Test coverage](./src/assets/test_coverage.png)<br />
