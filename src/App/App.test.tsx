@@ -2,7 +2,7 @@ import App from './App';
 import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { fetchAllCurrentUSAData, fetchCurrentStateData } from '../apiCalls'
-import { singleState, simplifiedStateData, usaData } from '../sampleData';
+import { singleState, usaData } from '../sampleData';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 jest.mock('../apiCalls');
@@ -22,7 +22,6 @@ describe('App', () => {
       </MemoryRouter>
     );
   });
-  afterEach(()=> cleanup())
 
   it('should render correctly', () => {
     const tagline = screen.getByText('Covid Comparisons');
@@ -110,5 +109,5 @@ describe('App', () => {
 
       const fluFatalities = await waitFor(() => screen.getByText('Colorado Flu Fatalities saw 568 deaths.'));
       expect(fluFatalities).toBeInTheDocument();
-    });
+  });
 });

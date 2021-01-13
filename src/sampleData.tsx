@@ -100,4 +100,4 @@ export const simplifiedUSAData = {
   hospitalizedCurrently: 132474
 }
 
-export const jsxElements = [<p className='icon' key={1}>X</p>, <p className='icon' key={2}>X</p>]
+export const jsxElements = [<p className='icon' key={1}>X</p>, <p className='icon' key={2}>X</p>];
