@@ -61,10 +61,10 @@ class App extends Component<Props, State> {
     .then(data => {
       const simplifiedStateData = simplifyAPIDataForSingleState(data)
       this.setState({ selectedUSAState: simplifiedStateData });
-      if (window.location.pathname !== '/') {
-        const category: string = window.location.pathname.slice(1)
-        this.handleComparisonClick(category)
-      } 
+      // if (window.location.pathname !== '/') {
+      //   const category: string = window.location.pathname.slice(1)
+      //   this.handleComparisonClick(category)
+      // } 
     })
     .catch(() => console.error);
 
