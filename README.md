@@ -1,6 +1,6 @@
 # [COVID Comparisons](https://codo-baggins.github.io/covid_comparisons/)
 
-## Contributors: 
+### Contributors: 
   - [Alyssa Bull](https://github.com/alyssabull) 
   - [Joe Lopez](https://github.com/Codo-Baggins) 
   - [Kara Caputo](https://github.com/kncaputo) 
