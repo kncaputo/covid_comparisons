@@ -11,6 +11,8 @@ This project was an eight-day group project in Module 3 at the Turing School of 
 
 COVID Comparisons (COCO) is an application that allows users to compare COVID-19 statistics to other diseases and historical events. The site is meant to bring some perspective to COVID-19's impact and provide users with a visual impact. 
 
+- Lighthouse Accessibility Score: 98% for browser & mobile view
+
 [Visit the deployed page.](https://kncaputo.github.io/covid_comparisons/)
 
 ## Tech Stack
